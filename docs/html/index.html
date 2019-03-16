@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>About eventkit &mdash; eventkit 0.8.0 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://eventkit.readthedocs.ioindex.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="eventkit" href="api.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> eventkit
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">eventkit</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">eventkit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>About eventkit</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p><img alt="" src="https://img.shields.io/badge/python-3.6+-blue.svg" /> <img alt="" src="https://img.shields.io/badge/status-beta-green.svg" /> <a class="reference external" href="https://pypi.python.org/pypi/eventkit"><img alt="PyPi" src="https://img.shields.io/pypi/v/eventkit.svg" /></a> <img alt="" src="https://img.shields.io/badge/license-BSD-blue.svg" /> <a class="reference external" href="http://rawgit.com/erdewit/eventkit/master/docs/html/api.html"><img alt="Documentation" src="https://img.shields.io/badge/docs-eventkit-brightgreen.svg" /></a></p>
+<div class="section" id="about-eventkit">
+<h1>About eventkit<a class="headerlink" href="#about-eventkit" title="Permalink to this headline">¶</a></h1>
+<p>Send events between loosely coupled components,
+compose all kinds of data pipelines.</p>
+<p>See the examples and the
+<a class="reference external" href="https://github.com/erdewit/eventkit/tree/master/notebooks/eventkit_introduction.ipynb">introduction notebook</a>
+to get a true feel for the possibilities.</p>
+</div>
+<div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">eventkit</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://www.python.org">Python</a> version 3.6 or higher is required.</p>
+</div>
+<div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p><strong>Create an event and connect two listeners</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eventkit</span> <span class="kn">as</span> <span class="nn">ev</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="n">event</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
+<span class="n">event</span> <span class="o">+=</span> <span class="n">f</span>
+<span class="n">event</span> <span class="o">+=</span> <span class="n">g</span>
+<span class="n">event</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Create a simple pipeline</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eventkit</span> <span class="kn">as</span> <span class="nn">ev</span>
+
+<span class="n">event</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ev</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;abcde&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">enumerate</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">run</span><span class="p">())</span>  <span class="c1"># in Jupyter: await event.list()</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p><strong>Create a pipeline to get a running average and standard deviation</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">eventkit</span> <span class="kn">as</span> <span class="nn">ev</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">event</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">500</span><span class="p">)[</span><span class="n">ev</span><span class="o">.</span><span class="n">ArrayMean</span><span class="p">,</span> <span class="n">ev</span><span class="o">.</span><span class="n">ArrayStd</span><span class="p">]</span><span class="o">.</span><span class="n">zip</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">last</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">())</span>  <span class="c1"># in Jupyter: await event.last()</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[(</span><span class="mf">0.00790957852672618</span><span class="p">,</span> <span class="mf">1.0345673260655333</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p><strong>Combine async iterators together</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">eventkit</span> <span class="kn">as</span> <span class="nn">ev</span>
+
+<span class="n">async</span> <span class="k">def</span> <span class="nf">ait</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">r</span><span class="p">:</span>
+        <span class="n">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">i</span>
+
+<span class="n">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">async</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ev</span><span class="o">.</span><span class="n">Zip</span><span class="p">(</span><span class="n">ait</span><span class="p">(</span><span class="s1">&#39;XYZ&#39;</span><span class="p">),</span> <span class="n">ait</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">)):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>  <span class="c1"># in Jupyter: await main()</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="distributed-computing">
+<h1>Distributed computing<a class="headerlink" href="#distributed-computing" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="https://github.com/erdewit/distex">distex</a> library provides a
+<code class="docutils literal notranslate"><span class="pre">poolmap</span></code> extension method to put multiple cores or machines to use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">distex</span> <span class="kn">import</span> <span class="n">Pool</span>
+<span class="kn">import</span> <span class="nn">eventkit</span> <span class="kn">as</span> <span class="nn">ev</span>
+<span class="kn">import</span> <span class="nn">bz2</span>
+
+<span class="n">pool</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">()</span>
+<span class="c1"># await pool  # un-comment in Jupyter</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;A&#39;</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">poolmap</span><span class="p">(</span><span class="n">pool</span><span class="p">,</span> <span class="n">bz2</span><span class="o">.</span><span class="n">compress</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">pipe</span><span class="o">.</span><span class="n">run</span><span class="p">())</span>  <span class="c1"># in Jupyter: print(await pipe)</span>
+<span class="n">pool</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inspired-by">
+<h1>Inspired by:<a class="headerlink" href="#inspired-by" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://doc.qt.io/qt-5/signalsandslots.html">Qt Signals &amp; Slots</a></li>
+<li><a class="reference external" href="https://docs.python.org/3/library/itertools.html">itertools</a></li>
+<li><a class="reference external" href="https://github.com/vxgmichel/aiostream">aiostream</a></li>
+<li><a class="reference external" href="https://baconjs.github.io/index.html">Bacon</a></li>
+<li><a class="reference external" href="https://github.com/dbrattli/aioreactive">aioreactive</a></li>
+<li><a class="reference external" href="http://reactivex.io/documentation/operators.html">Reactive extensions</a></li>
+<li><a class="reference external" href="https://underscorejs.org">underscore.js</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/standard/events">.NET Events</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+<p>The complete <a class="reference external" href="http://rawgit.com/erdewit/eventkit/master/docs/html/api.html">API documentation</a>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">eventkit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#event">Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-eventkit.ops.create">Create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-eventkit.ops.select">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-eventkit.ops.transform">Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-eventkit.ops.aggregate">Aggregate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-eventkit.ops.combine">Combine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-eventkit.ops.timing">Timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-eventkit.ops.array">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-eventkit.ops.misc">Misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-eventkit.util">Util</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="eventkit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Ewald de Wit
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
