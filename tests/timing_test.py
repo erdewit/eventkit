@@ -29,15 +29,15 @@ class TimingTest(unittest.TestCase):
         self.assertEqual(event.run(), [Event.NO_VALUE])
 
     def test_debounce(self):
-        event = Event.range(10, interval=0.02) \
+        event = Event.range(10, interval=0.05) \
             .mergemap(lambda t: Event.sequence(array2, 0.001)) \
-            .debounce(0.005)
+            .debounce(0.01)
         self.assertEqual(event.run(), [109] * 10)
 
     def test_debounce_on_first(self):
-        event = Event.range(10, interval=0.02) \
+        event = Event.range(10, interval=0.05) \
             .mergemap(lambda t: Event.sequence(array2, 0.001)) \
-            .debounce(0.005, on_first=True)
+            .debounce(0.01, on_first=True)
         self.assertEqual(event.run(), [100] * 10)
 
     def test_throttle(self):
