@@ -157,7 +157,8 @@ The complete `API documentation <http://rawgit.com/erdewit/eventkit/master/docs/
 .. |License| image:: https://img.shields.io/badge/license-BSD-blue.svg
    :alt:
 
-.. |Docs| image:: https://img.shields.io/badge/docs-eventkit-brightgreen.svg
+.. |Docs| image:: https://readthedocs.org/projects/eventkit/badge/?version=latest
    :alt: Documentation
-   :target: http://rawgit.com/erdewit/eventkit/master/docs/html/api.html
+   :target: https://eventkit.readthedocs.io
+
 
