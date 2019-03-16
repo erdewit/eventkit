@@ -155,7 +155,7 @@ The complete `API documentation <https://eventkit.readthedocs.io/en/latest/api.h
 .. _Python: http://www.python.org
 .. _`Interactive Brokers Python API`: http://interactivebrokers.github.io
 
-.. |Build| image:: https://travis-ci.org/erdewit/eventkit
+.. |Build| image:: https://api.travis-ci.org/erdewit/eventkit.svg?branch=master
    :alt: Travis build
    :target: https://travis-ci.org/erdewit/eventkit
 
