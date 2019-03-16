@@ -1,5 +1,5 @@
 dist.sh
-eventkit/__pycache__
+**/__pycache__
 dist
 build
 .vscode
