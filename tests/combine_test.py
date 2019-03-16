@@ -24,8 +24,8 @@ class CombineTest(unittest.TestCase):
         self.assertEqual(event.run(), [0, 100] + array3)
 
     def test_concat(self):
-        e1 = Event.sequence(array1, interval=0.005)
-        e2 = Event.sequence(array2, interval=0.005).delay(0.017)
+        e1 = Event.sequence(array1, interval=0.02)
+        e2 = Event.sequence(array2, interval=0.02).delay(0.07)
         event = e1.concat(e2)
         self.assertEqual(event.run(), [
             0, 1, 2, 3, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109])
