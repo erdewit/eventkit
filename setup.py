@@ -1,6 +1,6 @@
 import os
 import codecs
-from setuptools import setup
+from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
@@ -27,7 +27,7 @@ setup(
         'Programming Language :: Python :: 3 :: Only',
     ],
     keywords=('python event asyncio'),
-    packages=['eventkit'],
+    packages=find_packages(),
     test_suite="tests",
     install_requires=['numpy'],
 )
