@@ -149,7 +149,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p><img alt="" src="https://img.shields.io/badge/python-3.6+-blue.svg" /> <img alt="" src="https://img.shields.io/badge/status-beta-green.svg" /> <a class="reference external" href="https://pypi.python.org/pypi/eventkit"><img alt="PyPi" src="https://img.shields.io/pypi/v/eventkit.svg" /></a> <img alt="" src="https://img.shields.io/badge/license-BSD-blue.svg" /> <a class="reference external" href="http://rawgit.com/erdewit/eventkit/master/docs/html/api.html"><img alt="Documentation" src="https://img.shields.io/badge/docs-eventkit-brightgreen.svg" /></a></p>
+  <p><img alt="" src="https://img.shields.io/badge/python-3.6+-blue.svg" /> <img alt="" src="https://img.shields.io/badge/status-beta-green.svg" /> <a class="reference external" href="https://pypi.python.org/pypi/eventkit"><img alt="PyPi" src="https://img.shields.io/pypi/v/eventkit.svg" /></a> <img alt="" src="https://img.shields.io/badge/license-BSD-blue.svg" /> <a class="reference external" href="https://eventkit.readthedocs.io"><img alt="Documentation" src="https://readthedocs.org/projects/eventkit/badge/?version=latest" /></a></p>
 <div class="section" id="about-eventkit">
 <h1>About eventkit<a class="headerlink" href="#about-eventkit" title="Permalink to this headline">¶</a></h1>
 <p>Send events between loosely coupled components,
@@ -235,6 +235,15 @@ to get a true feel for the possibilities.</p>
 <span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p><strong>Realtime video analysis pipeline</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">video</span> <span class="o">=</span> <span class="n">VideoStream</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">CAM_ID</span><span class="p">)</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">video</span> <span class="o">|</span> <span class="n">FaceTracker</span> <span class="o">|</span> <span class="n">SceneAnalyzer</span>
+<span class="n">lastScene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">aiter</span><span class="p">(</span><span class="n">skip_to_last</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">async</span> <span class="k">for</span> <span class="n">frame</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">persons</span> <span class="ow">in</span> <span class="n">lastScene</span><span class="p">:</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/erdewit/heartwave/blob/396eae46bb975d7f5e3cb943e813996dac951c8d/heartwave/app.py#L88">Full source code</a></p>
 </div>
 <div class="section" id="distributed-computing">
 <h1>Distributed computing<a class="headerlink" href="#distributed-computing" title="Permalink to this headline">¶</a></h1>
@@ -272,7 +281,7 @@ to get a true feel for the possibilities.</p>
 </div>
 <div class="section" id="documentation">
 <h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
-<p>The complete <a class="reference external" href="http://rawgit.com/erdewit/eventkit/master/docs/html/api.html">API documentation</a>.</p>
+<p>The complete <a class="reference external" href="https://eventkit.readthedocs.io/en/latest/api.html">API documentation</a>.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">eventkit</a><ul>

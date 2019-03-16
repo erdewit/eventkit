@@ -99,6 +99,18 @@ Output::
     ('Y', '2')
     ('Z', '3')
 
+**Realtime video analysis pipeline**
+
+.. code-block:: python
+
+    self.video = VideoStream(conf.CAM_ID)
+    scene = self.video | FaceTracker | SceneAnalyzer
+    lastScene = scene.aiter(skip_to_last=True)
+    async for frame, faces, persons in lastScene:
+        ...
+
+`Full source code <https://github.com/erdewit/heartwave/blob/396eae46bb975d7f5e3cb943e813996dac951c8d/heartwave/app.py#L88>`_
+
 Distributed computing
 ---------------------
 
@@ -136,7 +148,7 @@ Inspired by:
 Documentation
 -------------
 
-The complete `API documentation <http://rawgit.com/erdewit/eventkit/master/docs/html/api.html>`_.
+The complete `API documentation <https://eventkit.readthedocs.io/en/latest/api.html>`_.
 
 
 

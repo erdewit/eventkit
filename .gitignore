@@ -1,4 +1,5 @@
-ib_insync/__pycache__
+dist.sh
+eventkit/__pycache__
 dist
 build
 .vscode
@@ -11,4 +12,4 @@ build
 docs/html/.buildinfo
 docs/html/.doctrees
 docs/doctrees
-ib_insync.egg-info
+eventkit.egg-info
