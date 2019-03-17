@@ -52,15 +52,12 @@ class TransformTest(unittest.TestCase):
         self.assertEqual(event.run(), [(i, 42) for i in array])
 
     def test_star(self):
-        def f(a, b):
-            r.append(b)
+        def f(i, j):
+            r.append((i, j))
 
         r = []
-        event = Event.sequence(array)
-        event = event.zip(event).star()
-        event += f
-        event.run()
-        self.assertEqual(r, array)
+        event = Event.sequence(array).map(lambda i: (i, i)).star().connect(f)
+        self.assertEqual(event.run(), r)
 
     def test_pack(self):
         event = Event.sequence(array).pack()
@@ -87,7 +84,7 @@ class TransformTest(unittest.TestCase):
 
     def test_sync_star_map(self):
         event = Event.sequence(array)
-        event = event.zip(event).star().map(lambda x, y: x / 2 - y)
+        event = event.map(lambda i: (i, i)).star().map(lambda x, y: x / 2 - y)
         self.assertEqual(
             event.run(),
             [x / 2 - y for x, y in zip(array, array)])

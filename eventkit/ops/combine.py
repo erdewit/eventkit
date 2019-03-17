@@ -239,7 +239,7 @@ class Zip(JoinOp):
         if ready:
             tup = tuple(q.popleft() for q in self._results)
             self._num_ready = sum(bool(q) for q in self._results)
-            self.emit(tup)
+            self.emit(*tup)
 
     def on_source_done(self, source):
         self._sources.remove(source)
@@ -279,7 +279,7 @@ class Ziplatest(JoinOp):
         if not self._is_primed:
             self._is_primed = not any(r is NO_VALUE for r in self._values)
         if self._is_primed:
-            self.emit(tuple(self._values))
+            self.emit(*self._values)
 
     def on_source_done(self, source):
         self._sources.remove(source)

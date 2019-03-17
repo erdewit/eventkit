@@ -1132,13 +1132,13 @@ class Event:
 
     def zip(self, *sources) -> "Zip":
         """
-        Emit zipped tuples, where each tuple contains the i-th values
-        from all of the source events. Only emits when each source has
+        Zip sources together: The i-th emit has the i-th value from
+        each source as positional arguments. Only emits when each source has
         emtted its i-th value and ends when any source ends::
 
-            source 1:  -a----b------------------c------d---e--f---|
-            source 2:  --------1-------2-------3---------4-----|
-            output:    --------(a,1)---(b,2)---(c,3)-----(d,4)-|
+            source 1:    -a----b------------------c------d---e--f---|
+            source 2:    --------1-------2-------3---------4-----|
+            output emit: --------(a,1)---(b,2)---(c,3)-----(d,4)-|
 
 
         Args:
@@ -1148,12 +1148,12 @@ class Event:
 
     def ziplatest(self, *sources, partial: bool = True) -> "Ziplatest":
         """
-        Emit zipped tuples with the latest value from each of the
+        Emit zipped values with the latest value from each of the
         source events. Emits every time when a source emits::
 
-            source 1:  -a-------------------b-------c---|
-            source 2:  ---------------1--------------------2------|
-            output:     (a,NoValue)---(a,1)-(b,1)---(c,1)--(c,2)--|
+            source 1:   -a-------------------b-------c---|
+            source 2:   ---------------1--------------------2------|
+            output emit: (a,NoValue)---(a,1)-(b,1)---(c,1)--(c,2)--|
 
         Args:
             sources: Source events.

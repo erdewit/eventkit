@@ -15,7 +15,7 @@ class TimingTest(unittest.TestCase):
         src = Event.sequence(array1, interval=0.01)
         e1 = src.timestamp().pluck(0)
         e2 = src.delay(delay).timestamp().pluck(0)
-        r = e1.zip(e2).star().map(lambda a, b: b - a).mean().run()
+        r = e1.zip(e2).map(lambda a, b: b - a).mean().run()
         self.assertLess(abs(r[-1]), delay + 0.002)
 
     def test_sample(self):
