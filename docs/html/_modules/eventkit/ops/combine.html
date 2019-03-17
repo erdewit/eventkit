@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>eventkit.ops.combine &mdash; eventkit 0.8.2 documentation</title>
+  <title>eventkit.ops.combine &mdash; eventkit 0.8.3 documentation</title>
   
 
   
@@ -388,7 +388,7 @@
         <span class="k">if</span> <span class="n">ready</span><span class="p">:</span>
             <span class="n">tup</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_num_ready</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">tup</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="o">*</span><span class="n">tup</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Zip.on_source_done"><a class="viewcode-back" href="../../../api.html#eventkit.ops.combine.Zip.on_source_done">[docs]</a>    <span class="k">def</span> <span class="nf">on_source_done</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
@@ -428,7 +428,7 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_primed</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_is_primed</span> <span class="o">=</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">r</span> <span class="ow">is</span> <span class="n">NO_VALUE</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_primed</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Ziplatest.on_source_done"><a class="viewcode-back" href="../../../api.html#eventkit.ops.combine.Ziplatest.on_source_done">[docs]</a>    <span class="k">def</span> <span class="nf">on_source_done</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>

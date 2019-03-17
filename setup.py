@@ -12,7 +12,7 @@ exec(open(os.path.join(here, 'eventkit', 'version.py')).read())
 setup(
     name='eventkit',
     version=__version__,
-    description='Event system',
+    description='Event-driven data pipelines',
     long_description=long_description,
     url='https://github.com/erdewit/eventkit',
     author='Ewald R. de Wit',
@@ -26,7 +26,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3 :: Only',
     ],
-    keywords=('python event asyncio'),
+    keywords=('python asyncio event driven data pipelines'),
     packages=find_packages(),
     test_suite="tests",
     install_requires=['numpy'],

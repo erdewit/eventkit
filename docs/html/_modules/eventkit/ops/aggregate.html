@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>eventkit.ops.aggregate &mdash; eventkit 0.8.2 documentation</title>
+  <title>eventkit.ops.aggregate &mdash; eventkit 0.8.3 documentation</title>
   
 
   
@@ -203,6 +203,13 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">Reduce</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Product"><a class="viewcode-back" href="../../../api.html#eventkit.ops.aggregate.Product">[docs]</a><span class="k">class</span> <span class="nc">Product</span><span class="p">(</span><span class="n">Reduce</span><span class="p">):</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">Reduce</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">mul</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Mean"><a class="viewcode-back" href="../../../api.html#eventkit.ops.aggregate.Mean">[docs]</a><span class="k">class</span> <span class="nc">Mean</span><span class="p">(</span><span class="n">Op</span><span class="p">):</span>

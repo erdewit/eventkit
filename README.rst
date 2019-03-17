@@ -1,10 +1,16 @@
 |Build| |PyVersion| |Status| |PyPiVersion| |License| |Docs|
 
-About eventkit
---------------
+Introduction
+------------
 
-Send events between loosely coupled components,
-compose all kinds of data pipelines.
+The primary use cases of eventmix are
+
+* to send events between loosely coupled components;
+* to compose all kinds of event-driven data pipelines.
+
+The interface is kept as Pythonic as possible,
+with familiar names from Python and its libraries where possible.
+For scheduling asyncio is used and there is seamless integration with it.
 
 See the examples and the
 `introduction notebook <https://github.com/erdewit/eventkit/tree/master/notebooks/eventkit_introduction.ipynb>`_

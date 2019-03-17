@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>eventkit &mdash; eventkit 0.8.2 documentation</title>
+  <title>eventkit &mdash; eventkit 0.8.3 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="About eventkit" href="index.html" /> 
+    <link rel="prev" title="Introduction" href="index.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -163,7 +163,7 @@
             
   <div class="section" id="eventkit">
 <span id="api"></span><h1>eventkit<a class="headerlink" href="#eventkit" title="Permalink to this headline">¶</a></h1>
-<p>Release 0.8.2.</p>
+<p>Release 0.8.3.</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="section" id="event">
@@ -1269,6 +1269,22 @@ emitted on the second source emit.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="eventkit.event.Event.product">
+<code class="descname">product</code><span class="sig-paren">(</span><em>start=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/event.html#Event.product"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.event.Event.product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Total product.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>start</strong> – Initial start value.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#eventkit.ops.aggregate.Product" title="eventkit.ops.aggregate.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">Product</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="eventkit.event.Event.mean">
 <code class="descname">mean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/event.html#Event.mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.event.Event.mean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total average.</p>
@@ -1588,12 +1604,12 @@ as that other source starts to emit:</p>
 <dl class="method">
 <dt id="eventkit.event.Event.zip">
 <code class="descname">zip</code><span class="sig-paren">(</span><em>*sources</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/event.html#Event.zip"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.event.Event.zip" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emit zipped tuples, where each tuple contains the i-th values
-from all of the source events. Only emits when each source has
+<dd><p>Zip sources together: The i-th emit has the i-th value from
+each source as positional arguments. Only emits when each source has
 emtted its i-th value and ends when any source ends:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="mi">1</span><span class="p">:</span>  <span class="o">-</span><span class="n">a</span><span class="o">----</span><span class="n">b</span><span class="o">------------------</span><span class="n">c</span><span class="o">------</span><span class="n">d</span><span class="o">---</span><span class="n">e</span><span class="o">--</span><span class="n">f</span><span class="o">---|</span>
-<span class="n">source</span> <span class="mi">2</span><span class="p">:</span>  <span class="o">--------</span><span class="mi">1</span><span class="o">-------</span><span class="mi">2</span><span class="o">-------</span><span class="mi">3</span><span class="o">---------</span><span class="mi">4</span><span class="o">-----|</span>
-<span class="n">output</span><span class="p">:</span>    <span class="o">--------</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">---</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">---</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">-----</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">-|</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="mi">1</span><span class="p">:</span>    <span class="o">-</span><span class="n">a</span><span class="o">----</span><span class="n">b</span><span class="o">------------------</span><span class="n">c</span><span class="o">------</span><span class="n">d</span><span class="o">---</span><span class="n">e</span><span class="o">--</span><span class="n">f</span><span class="o">---|</span>
+<span class="n">source</span> <span class="mi">2</span><span class="p">:</span>    <span class="o">--------</span><span class="mi">1</span><span class="o">-------</span><span class="mi">2</span><span class="o">-------</span><span class="mi">3</span><span class="o">---------</span><span class="mi">4</span><span class="o">-----|</span>
+<span class="n">output</span> <span class="n">emit</span><span class="p">:</span> <span class="o">--------</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">---</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">---</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">-----</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">-|</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1611,11 +1627,11 @@ emtted its i-th value and ends when any source ends:</p>
 <dl class="method">
 <dt id="eventkit.event.Event.ziplatest">
 <code class="descname">ziplatest</code><span class="sig-paren">(</span><em>*sources</em>, <em>partial=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/event.html#Event.ziplatest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.event.Event.ziplatest" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emit zipped tuples with the latest value from each of the
+<dd><p>Emit zipped values with the latest value from each of the
 source events. Emits every time when a source emits:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="mi">1</span><span class="p">:</span>  <span class="o">-</span><span class="n">a</span><span class="o">-------------------</span><span class="n">b</span><span class="o">-------</span><span class="n">c</span><span class="o">---|</span>
-<span class="n">source</span> <span class="mi">2</span><span class="p">:</span>  <span class="o">---------------</span><span class="mi">1</span><span class="o">--------------------</span><span class="mi">2</span><span class="o">------|</span>
-<span class="n">output</span><span class="p">:</span>     <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">NoValue</span><span class="p">)</span><span class="o">---</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">---</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">--</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">--|</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="mi">1</span><span class="p">:</span>   <span class="o">-</span><span class="n">a</span><span class="o">-------------------</span><span class="n">b</span><span class="o">-------</span><span class="n">c</span><span class="o">---|</span>
+<span class="n">source</span> <span class="mi">2</span><span class="p">:</span>   <span class="o">---------------</span><span class="mi">1</span><span class="o">--------------------</span><span class="mi">2</span><span class="o">------|</span>
+<span class="n">output</span> <span class="n">emit</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">NoValue</span><span class="p">)</span><span class="o">---</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">---</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">--</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">--|</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2458,6 +2474,11 @@ event and emit the sample.</p>
 <dd></dd></dl>
 
 <dl class="class">
+<dt id="eventkit.ops.aggregate.Product">
+<em class="property">class </em><code class="descclassname">eventkit.ops.aggregate.</code><code class="descname">Product</code><span class="sig-paren">(</span><em>start=1</em>, <em>source=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/ops/aggregate.html#Product"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.ops.aggregate.Product" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
 <dt id="eventkit.ops.aggregate.Mean">
 <em class="property">class </em><code class="descclassname">eventkit.ops.aggregate.</code><code class="descname">Mean</code><span class="sig-paren">(</span><em>source=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/ops/aggregate.html#Mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.ops.aggregate.Mean" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
@@ -3226,7 +3247,7 @@ to space between values.</li>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="index.html" class="btn btn-neutral" title="About eventkit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

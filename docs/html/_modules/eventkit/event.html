@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>eventkit.event &mdash; eventkit 0.8.2 documentation</title>
+  <title>eventkit.event &mdash; eventkit 0.8.3 documentation</title>
   
 
   
@@ -1094,6 +1094,15 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Sum</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="Event.product"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.product">[docs]</a>    <span class="k">def</span> <span class="nf">product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Product&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Total product.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            start: Initial start value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Product</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Event.mean"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.mean">[docs]</a>    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Mean&quot;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Total average.</span>
@@ -1272,13 +1281,13 @@
 
 <div class="viewcode-block" id="Event.zip"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.zip">[docs]</a>    <span class="k">def</span> <span class="nf">zip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Zip&quot;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Emit zipped tuples, where each tuple contains the i-th values</span>
-<span class="sd">        from all of the source events. Only emits when each source has</span>
+<span class="sd">        Zip sources together: The i-th emit has the i-th value from</span>
+<span class="sd">        each source as positional arguments. Only emits when each source has</span>
 <span class="sd">        emtted its i-th value and ends when any source ends::</span>
 
-<span class="sd">            source 1:  -a----b------------------c------d---e--f---|</span>
-<span class="sd">            source 2:  --------1-------2-------3---------4-----|</span>
-<span class="sd">            output:    --------(a,1)---(b,2)---(c,3)-----(d,4)-|</span>
+<span class="sd">            source 1:    -a----b------------------c------d---e--f---|</span>
+<span class="sd">            source 2:    --------1-------2-------3---------4-----|</span>
+<span class="sd">            output emit: --------(a,1)---(b,2)---(c,3)-----(d,4)-|</span>
 
 
 <span class="sd">        Args:</span>
@@ -1288,12 +1297,12 @@
 
 <div class="viewcode-block" id="Event.ziplatest"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.ziplatest">[docs]</a>    <span class="k">def</span> <span class="nf">ziplatest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">,</span> <span class="n">partial</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Ziplatest&quot;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Emit zipped tuples with the latest value from each of the</span>
+<span class="sd">        Emit zipped values with the latest value from each of the</span>
 <span class="sd">        source events. Emits every time when a source emits::</span>
 
-<span class="sd">            source 1:  -a-------------------b-------c---|</span>
-<span class="sd">            source 2:  ---------------1--------------------2------|</span>
-<span class="sd">            output:     (a,NoValue)---(a,1)-(b,1)---(c,1)--(c,2)--|</span>
+<span class="sd">            source 1:   -a-------------------b-------c---|</span>
+<span class="sd">            source 2:   ---------------1--------------------2------|</span>
+<span class="sd">            output emit: (a,NoValue)---(a,1)-(b,1)---(c,1)--(c,2)--|</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            sources: Source events.</span>
@@ -1422,7 +1431,8 @@
 <span class="kn">from</span> <span class="nn">.ops.array</span> <span class="k">import</span> <span class="p">(</span><span class="n">Array</span><span class="p">,</span> <span class="n">ArrayMin</span><span class="p">,</span> <span class="n">ArrayMax</span><span class="p">,</span> <span class="n">ArraySum</span><span class="p">,</span> <span class="n">ArrayMean</span><span class="p">,</span>  <span class="c1"># noqa</span>
     <span class="n">ArrayStd</span><span class="p">,</span> <span class="n">ArrayAny</span><span class="p">,</span> <span class="n">ArrayAll</span><span class="p">)</span> <span class="c1"># noqa</span>
 <span class="kn">from</span> <span class="nn">.ops.aggregate</span> <span class="k">import</span> <span class="p">(</span>
-    <span class="n">Count</span><span class="p">,</span> <span class="n">Reduce</span><span class="p">,</span> <span class="n">Min</span><span class="p">,</span> <span class="n">Max</span><span class="p">,</span> <span class="n">Sum</span><span class="p">,</span> <span class="n">Mean</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">All</span><span class="p">,</span> <span class="n">Ema</span><span class="p">,</span> <span class="n">Pairwise</span><span class="p">,</span> <span class="n">List</span><span class="p">)</span>  <span class="c1"># noqa</span>
+    <span class="n">Count</span><span class="p">,</span> <span class="n">Reduce</span><span class="p">,</span> <span class="n">Min</span><span class="p">,</span> <span class="n">Max</span><span class="p">,</span> <span class="n">Sum</span><span class="p">,</span> <span class="n">Product</span><span class="p">,</span> <span class="n">Mean</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">All</span><span class="p">,</span>
+    <span class="n">Ema</span><span class="p">,</span> <span class="n">Pairwise</span><span class="p">,</span> <span class="n">List</span><span class="p">)</span>  <span class="c1"># noqa</span>
 <span class="kn">from</span> <span class="nn">.ops.timing</span> <span class="k">import</span> <span class="p">(</span>
     <span class="n">Delay</span><span class="p">,</span> <span class="n">Timeout</span><span class="p">,</span> <span class="n">Throttle</span><span class="p">,</span> <span class="n">Debounce</span><span class="p">,</span> <span class="n">Sample</span><span class="p">)</span>  <span class="c1"># noqa</span>
 <span class="kn">from</span> <span class="nn">.ops.misc</span> <span class="k">import</span> <span class="n">Errors</span><span class="p">,</span> <span class="n">EndOnError</span>  <span class="c1"># noqa</span>
