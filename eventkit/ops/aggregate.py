@@ -56,6 +56,13 @@ class Sum(Reduce):
         Reduce.__init__(self, operator.add, start, source)
 
 
+class Product(Reduce):
+    __slots__ = ()
+
+    def __init__(self, start=1, source=None):
+        Reduce.__init__(self, operator.mul, start, source)
+
+
 class Mean(Op):
     __slots__ = ('_count', '_sum')
 

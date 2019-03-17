@@ -20,6 +20,11 @@ class AggregateTest(unittest.TestCase):
         self.assertEqual(event.run(), [
             0, 1, 3, 6, 10, 15, 21, 28, 36, 45])
 
+    def test_product(self):
+        event = Event.sequence(array[1:]).product()
+        self.assertEqual(event.run(), [
+            1, 2, 6, 24, 120, 720, 5040, 40320, 362880])
+
     def test_any(self):
         event = Event.sequence(array).any()
         self.assertEqual(event.run(), [

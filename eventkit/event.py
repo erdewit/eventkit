@@ -945,6 +945,15 @@ class Event:
         """
         return Sum(start, self)
 
+    def product(self, start=1) -> "Product":
+        """
+        Total product.
+
+        Args:
+            start: Initial start value.
+        """
+        return Product(start, self)
+
     def mean(self) -> "Mean":
         """
         Total average.
@@ -1273,7 +1282,8 @@ from .ops.transform import (
 from .ops.array import (Array, ArrayMin, ArrayMax, ArraySum, ArrayMean,  # noqa
     ArrayStd, ArrayAny, ArrayAll) # noqa
 from .ops.aggregate import (
-    Count, Reduce, Min, Max, Sum, Mean, Any, All, Ema, Pairwise, List)  # noqa
+    Count, Reduce, Min, Max, Sum, Product, Mean, Any, All,
+    Ema, Pairwise, List)  # noqa
 from .ops.timing import (
     Delay, Timeout, Throttle, Debounce, Sample)  # noqa
 from .ops.misc import Errors, EndOnError  # noqa
