@@ -105,17 +105,17 @@ Output::
     ('Y', '2')
     ('Z', '3')
 
-**Realtime video analysis pipeline**
+**Real-time video analysis pipeline**
 
 .. code-block:: python
 
     self.video = VideoStream(conf.CAM_ID)
     scene = self.video | FaceTracker | SceneAnalyzer
     lastScene = scene.aiter(skip_to_last=True)
-    async for frame, faces, persons in lastScene:
+    async for frame, persons in lastScene:
         ...
 
-`Full source code <https://github.com/erdewit/heartwave/blob/396eae46bb975d7f5e3cb943e813996dac951c8d/heartwave/app.py#L88>`_
+`Full source code <https://github.com/erdewit/heartwave/blob/100e1a89d18756e141f9dcfbb73c55a1009debf4/heartwave/app.py#L88>`_
 
 Distributed computing
 ---------------------
