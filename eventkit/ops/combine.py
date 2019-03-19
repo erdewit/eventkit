@@ -50,7 +50,7 @@ class JoinOp(Op):
 class AddableJoinOp(JoinOp):
     """
     Base class for join operators where new sources, produced by a
-    parent high-order event, can be added dynamically.
+    parent higher-order event, can be added dynamically.
     """
     __slots__ = ('_parent',)
 
