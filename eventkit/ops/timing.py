@@ -58,7 +58,7 @@ class Timeout(Op):
 class Debounce(Op):
     __slots__ = ('_interval', '_on_first', '_handle', '_last_time')
 
-    def __init__(self, interval, on_first=True, source=None):
+    def __init__(self, interval, on_first=False, source=None):
         Op.__init__(self, source)
         self._interval = interval
         self._on_first = on_first
