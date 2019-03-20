@@ -39,6 +39,12 @@ class Array(Op):
         """
         return ArraySum(self)
 
+    def prod(self) -> "ArrayProd":
+        """
+        Product.
+        """
+        return ArrayProd(self)
+
     def mean(self) -> "ArrayMean":
         """
         Mean value.
@@ -83,6 +89,13 @@ class ArraySum(Op):
 
     def on_source(self, arg):
         self.emit(arg.sum())
+
+
+class ArrayProd(Op):
+    __slots__ = ()
+
+    def on_source(self, arg):
+        self.emit(arg.prod())
 
 
 class ArrayMean(Op):

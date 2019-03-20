@@ -825,7 +825,8 @@ class Event:
                 * ``False``: Results are in order of completion.
             task_limit: Max number of concurrent tasks, or None for no limit.
 
-        ``func``, ``timeout`` and ``ordered`` apply to async functions only.
+        ``timeout``, ``ordered`` and ``task_limit`` apply to
+        async functions only.
         """
         return Map(func, timeout, ordered, task_limit, self)
 
@@ -1279,8 +1280,8 @@ from .ops.transform import (
     Map, Emap, Mergemap, Chainmap, Concatmap, Switchmap,
     Partial, PartialRight, Star, Pack, Pluck,
     Previous, Copy, Deepcopy)  # noqa
-from .ops.array import (Array, ArrayMin, ArrayMax, ArraySum, ArrayMean,  # noqa
-    ArrayStd, ArrayAny, ArrayAll) # noqa
+from .ops.array import (Array, ArrayMin, ArrayMax, ArraySum,  # noqa
+    ArrayProd, ArrayMean, ArrayStd, ArrayAny, ArrayAll) # noqa
 from .ops.aggregate import (
     Count, Reduce, Min, Max, Sum, Product, Mean, Any, All,
     Ema, Pairwise, List)  # noqa
