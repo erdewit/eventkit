@@ -215,7 +215,8 @@ class Zip(JoinOp):
         JoinOp.__init__(self)
         self._num_ready = 0  # number of sources with a pending result
         self._source2cbs = defaultdict(list)  # map from source to callbacks
-        self._set_sources(*sources)
+        if sources:
+            self._set_sources(*sources)
 
     def _set_sources(self, *sources):
         self._sources = deque(Event.create(s) for s in sources)
@@ -259,7 +260,8 @@ class Ziplatest(JoinOp):
         JoinOp.__init__(self)
         self._is_primed = partial
         self._source2cbs = defaultdict(list)  # map from source to callbacks
-        self._set_sources(*sources)
+        if sources:
+            self._set_sources(*sources)
 
     def _set_sources(self, *sources):
         sources = [Event.create(s) for s in sources]

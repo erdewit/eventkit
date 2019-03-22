@@ -9,7 +9,8 @@ class _NoValue:
 
     def __repr__(self):
         return '<NoValue>'
-    __str__ = repr
+
+    __str__ = __repr__
 
 
 NO_VALUE = _NoValue()
