@@ -188,7 +188,8 @@ class Event:
                 if len(self.error_event):
                     self.error_event.emit(self, error)
                 else:
-                    Event.logger.exception(error)
+                    Event.logger.exception(
+                        f'Value {args} caused exception for event {self}')
 
     def emit_threadsafe(self, *args):
         """
