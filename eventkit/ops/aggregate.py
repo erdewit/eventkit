@@ -92,20 +92,21 @@ class All(Reduce):
 
 
 class Ema(Op):
-    __slots__ = ('_f1', '_f2')
+    __slots__ = ('_f1', '_f2', '_prev')
 
     def __init__(self, n=None, weight=None, source=None):
         Op.__init__(self, source)
         self._f1 = weight or 2.0 / (n + 1)
         self._f2 = 1 - self._f1
+        self._prev = NO_VALUE
 
     def on_source(self, *args):
-        prev = self.value()
-        if prev is NO_VALUE:
-            value = args
+        if self._prev is NO_VALUE:
+            self._prev = value = args
         else:
             value = [
-                self._f2 * p + self._f1 * a for p, a in zip(prev, args)]
+                self._f2 * p + self._f1 * a for p, a in zip(self._prev, args)]
+            self._prev = value
         self.emit(*value)
 
 
