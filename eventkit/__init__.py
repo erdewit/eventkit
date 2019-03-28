@@ -20,7 +20,7 @@ from .ops.array import (Array, ArrayMin, ArrayMax, ArraySum, ArrayMean,  # noqa
     ArrayStd, ArrayAny, ArrayAll) # noqa
 from .ops.aggregate import (
     Count, Reduce, Min, Max, Sum, Product, Mean, Any, All,
-    Ema, Pairwise, List)  # noqa
+    Ema, Pairwise, List, Deque)  # noqa
 from .ops.timing import (
     Delay, Timeout, Throttle, Debounce, Sample)  # noqa
 from .ops.misc import Errors, EndOnError  # noqa

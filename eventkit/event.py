@@ -1041,6 +1041,16 @@ class Event:
         """
         return List(self)
 
+    def deque(self, count=0) -> "Deque":
+        """
+        Emit a ``deque`` with the last ``count`` values from the source
+        (or less in the lead-in phase).
+
+        Args:
+            count: Number of last periods to use, or 0 to use all.
+        """
+        return Deque(count, self)
+
     def array(self, count=0) -> "Array":
         """
         Emit a numpy array with the last ``count`` values from the source
@@ -1285,7 +1295,7 @@ from .ops.array import (Array, ArrayMin, ArrayMax, ArraySum,  # noqa
     ArrayProd, ArrayMean, ArrayStd, ArrayAny, ArrayAll) # noqa
 from .ops.aggregate import (
     Count, Reduce, Min, Max, Sum, Product, Mean, Any, All,
-    Ema, Pairwise, List)  # noqa
+    Ema, Pairwise, List, Deque)  # noqa
 from .ops.timing import (
     Delay, Timeout, Throttle, Debounce, Sample)  # noqa
 from .ops.misc import Errors, EndOnError  # noqa

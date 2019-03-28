@@ -1,5 +1,6 @@
 import operator
 import itertools
+from collections import deque
 
 from ..util import NO_VALUE
 from .op import Op
@@ -102,11 +103,11 @@ class Ema(Op):
 
     def on_source(self, *args):
         if self._prev is NO_VALUE:
-            self._prev = value = args
+            value = args
         else:
             value = [
                 self._f2 * p + self._f1 * a for p, a in zip(self._prev, args)]
-            self._prev = value
+        self._prev = value
         self.emit(*value)
 
 
@@ -142,3 +143,19 @@ class List(Op):
         self._disconnect_from(self._source)
         self._source = None
         self.set_done()
+
+
+class Deque(Op):
+    __slots__ = ('_count', '_q')
+
+    def __init__(self, count, source=None):
+        Op.__init__(self, source)
+        self._count = count
+        self._q = deque()
+
+    def on_source(self, *args):
+        self._q.append(
+            args[0] if len(args) == 1 else args if args else NO_VALUE)
+        if self._count and len(self._q) > self._count:
+            self._q.popleft()
+        self.emit(self._q)
