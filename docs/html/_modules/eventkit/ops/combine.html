@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>eventkit.ops.combine &mdash; eventkit 0.8.3 documentation</title>
+  <title>eventkit.ops.combine &mdash; eventkit 0.8.4 documentation</title>
   
 
   
@@ -199,7 +199,7 @@
 <div class="viewcode-block" id="AddableJoinOp"><a class="viewcode-back" href="../../../api.html#eventkit.ops.combine.AddableJoinOp">[docs]</a><span class="k">class</span> <span class="nc">AddableJoinOp</span><span class="p">(</span><span class="n">JoinOp</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base class for join operators where new sources, produced by a</span>
-<span class="sd">    parent high-order event, can be added dynamically.</span>
+<span class="sd">    parent higher-order event, can be added dynamically.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_parent&#39;</span><span class="p">,)</span>
 
@@ -364,7 +364,8 @@
         <span class="n">JoinOp</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_ready</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># number of sources with a pending result</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_source2cbs</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>  <span class="c1"># map from source to callbacks</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_set_sources</span><span class="p">(</span><span class="o">*</span><span class="n">sources</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sources</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_sources</span><span class="p">(</span><span class="o">*</span><span class="n">sources</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_set_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">)</span>
@@ -408,7 +409,8 @@
         <span class="n">JoinOp</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_is_primed</span> <span class="o">=</span> <span class="n">partial</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_source2cbs</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>  <span class="c1"># map from source to callbacks</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_set_sources</span><span class="p">(</span><span class="o">*</span><span class="n">sources</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sources</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_sources</span><span class="p">(</span><span class="o">*</span><span class="n">sources</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_set_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">):</span>
         <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">]</span>
@@ -416,7 +418,7 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_done</span><span class="p">()</span>
             <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">source</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">):</span>
             <span class="n">cb</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_source_i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
             <span class="n">source</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_source_error</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_source_done</span><span class="p">)</span>

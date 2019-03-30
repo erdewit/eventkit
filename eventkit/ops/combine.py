@@ -269,7 +269,7 @@ class Ziplatest(JoinOp):
         if not self._sources:
             self.set_done()
             return
-        self._values = [s.value() for s in self._sources]
+        self._values = [s.value() for s in sources]
         for i, source in enumerate(self._sources):
             cb = functools.partial(self._on_source_i, i)
             source.connect(cb, self.on_source_error, self.on_source_done)

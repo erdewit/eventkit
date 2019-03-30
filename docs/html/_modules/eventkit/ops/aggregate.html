@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>eventkit.ops.aggregate &mdash; eventkit 0.8.3 documentation</title>
+  <title>eventkit.ops.aggregate &mdash; eventkit 0.8.4 documentation</title>
   
 
   
@@ -149,6 +149,7 @@
   <h1>Source code for eventkit.ops.aggregate</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">operator</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">deque</span>
 
 <span class="kn">from</span> <span class="nn">..util</span> <span class="k">import</span> <span class="n">NO_VALUE</span>
 <span class="kn">from</span> <span class="nn">.op</span> <span class="k">import</span> <span class="n">Op</span>
@@ -241,20 +242,21 @@
 
 
 <div class="viewcode-block" id="Ema"><a class="viewcode-back" href="../../../api.html#eventkit.ops.aggregate.Ema">[docs]</a><span class="k">class</span> <span class="nc">Ema</span><span class="p">(</span><span class="n">Op</span><span class="p">):</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_f1&#39;</span><span class="p">,</span> <span class="s1">&#39;_f2&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_f1&#39;</span><span class="p">,</span> <span class="s1">&#39;_f2&#39;</span><span class="p">,</span> <span class="s1">&#39;_prev&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">Op</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_f1</span> <span class="o">=</span> <span class="n">weight</span> <span class="ow">or</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_f2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span> <span class="o">=</span> <span class="n">NO_VALUE</span>
 
 <div class="viewcode-block" id="Ema.on_source"><a class="viewcode-back" href="../../../api.html#eventkit.ops.aggregate.Ema.on_source">[docs]</a>    <span class="k">def</span> <span class="nf">on_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="n">prev</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">prev</span> <span class="ow">is</span> <span class="n">NO_VALUE</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span> <span class="ow">is</span> <span class="n">NO_VALUE</span><span class="p">:</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">args</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">value</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_f2</span> <span class="o">*</span> <span class="n">p</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f1</span> <span class="o">*</span> <span class="n">a</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">prev</span><span class="p">,</span> <span class="n">args</span><span class="p">)]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_f2</span> <span class="o">*</span> <span class="n">p</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f1</span> <span class="o">*</span> <span class="n">a</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_prev</span><span class="p">,</span> <span class="n">args</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span> <span class="o">=</span> <span class="n">value</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="o">*</span><span class="n">value</span><span class="p">)</span></div></div>
 
 
@@ -290,6 +292,22 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_disconnect_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_source</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_source</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_done</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="Deque"><a class="viewcode-back" href="../../../api.html#eventkit.ops.aggregate.Deque">[docs]</a><span class="k">class</span> <span class="nc">Deque</span><span class="p">(</span><span class="n">Op</span><span class="p">):</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_count&#39;</span><span class="p">,</span> <span class="s1">&#39;_q&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">Op</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="n">count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Deque.on_source"><a class="viewcode-back" href="../../../api.html#eventkit.ops.aggregate.Deque.on_source">[docs]</a>    <span class="k">def</span> <span class="nf">on_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">args</span> <span class="k">if</span> <span class="n">args</span> <span class="k">else</span> <span class="n">NO_VALUE</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_q</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_q</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

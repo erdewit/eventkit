@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>eventkit.event &mdash; eventkit 0.8.3 documentation</title>
+  <title>eventkit.event &mdash; eventkit 0.8.4 documentation</title>
   
 
   
@@ -337,7 +337,8 @@
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">error_event</span><span class="p">):</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">error_event</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">Event</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">error</span><span class="p">)</span></div>
+                    <span class="n">Event</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span>
+                        <span class="n">f</span><span class="s1">&#39;Value </span><span class="si">{args}</span><span class="s1"> caused exception for event </span><span class="si">{self}</span><span class="s1">&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.emit_threadsafe"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.emit_threadsafe">[docs]</a>    <span class="k">def</span> <span class="nf">emit_threadsafe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -974,7 +975,8 @@
 <span class="sd">                * ``False``: Results are in order of completion.</span>
 <span class="sd">            task_limit: Max number of concurrent tasks, or None for no limit.</span>
 
-<span class="sd">        ``func``, ``timeout`` and ``ordered`` apply to async functions only.</span>
+<span class="sd">        ``timeout``, ``ordered`` and ``task_limit`` apply to</span>
+<span class="sd">        async functions only.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Map</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">ordered</span><span class="p">,</span> <span class="n">task_limit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
@@ -1188,6 +1190,16 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">List</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="Event.deque"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.deque">[docs]</a>    <span class="k">def</span> <span class="nf">deque</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Deque&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Emit a ``deque`` with the last ``count`` values from the source</span>
+<span class="sd">        (or less in the lead-in phase).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            count: Number of last periods to use, or 0 to use all.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Deque</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Event.array"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.array">[docs]</a>    <span class="k">def</span> <span class="nf">array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Array&quot;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Emit a numpy array with the last ``count`` values from the source</span>
@@ -1287,7 +1299,7 @@
 
 <span class="sd">            source 1:    -a----b------------------c------d---e--f---|</span>
 <span class="sd">            source 2:    --------1-------2-------3---------4-----|</span>
-<span class="sd">            output emit: --------(a,1)---(b,2)---(c,3)-----(d,4)-|</span>
+<span class="sd">            output emit: --------(a,1)---(b,2)----(c,3)----(d,4)-|</span>
 
 
 <span class="sd">        Args:</span>
@@ -1428,11 +1440,11 @@
     <span class="n">Map</span><span class="p">,</span> <span class="n">Emap</span><span class="p">,</span> <span class="n">Mergemap</span><span class="p">,</span> <span class="n">Chainmap</span><span class="p">,</span> <span class="n">Concatmap</span><span class="p">,</span> <span class="n">Switchmap</span><span class="p">,</span>
     <span class="n">Partial</span><span class="p">,</span> <span class="n">PartialRight</span><span class="p">,</span> <span class="n">Star</span><span class="p">,</span> <span class="n">Pack</span><span class="p">,</span> <span class="n">Pluck</span><span class="p">,</span>
     <span class="n">Previous</span><span class="p">,</span> <span class="n">Copy</span><span class="p">,</span> <span class="n">Deepcopy</span><span class="p">)</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">.ops.array</span> <span class="k">import</span> <span class="p">(</span><span class="n">Array</span><span class="p">,</span> <span class="n">ArrayMin</span><span class="p">,</span> <span class="n">ArrayMax</span><span class="p">,</span> <span class="n">ArraySum</span><span class="p">,</span> <span class="n">ArrayMean</span><span class="p">,</span>  <span class="c1"># noqa</span>
-    <span class="n">ArrayStd</span><span class="p">,</span> <span class="n">ArrayAny</span><span class="p">,</span> <span class="n">ArrayAll</span><span class="p">)</span> <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">.ops.array</span> <span class="k">import</span> <span class="p">(</span><span class="n">Array</span><span class="p">,</span> <span class="n">ArrayMin</span><span class="p">,</span> <span class="n">ArrayMax</span><span class="p">,</span> <span class="n">ArraySum</span><span class="p">,</span>  <span class="c1"># noqa</span>
+    <span class="n">ArrayProd</span><span class="p">,</span> <span class="n">ArrayMean</span><span class="p">,</span> <span class="n">ArrayStd</span><span class="p">,</span> <span class="n">ArrayAny</span><span class="p">,</span> <span class="n">ArrayAll</span><span class="p">)</span> <span class="c1"># noqa</span>
 <span class="kn">from</span> <span class="nn">.ops.aggregate</span> <span class="k">import</span> <span class="p">(</span>
     <span class="n">Count</span><span class="p">,</span> <span class="n">Reduce</span><span class="p">,</span> <span class="n">Min</span><span class="p">,</span> <span class="n">Max</span><span class="p">,</span> <span class="n">Sum</span><span class="p">,</span> <span class="n">Product</span><span class="p">,</span> <span class="n">Mean</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">All</span><span class="p">,</span>
-    <span class="n">Ema</span><span class="p">,</span> <span class="n">Pairwise</span><span class="p">,</span> <span class="n">List</span><span class="p">)</span>  <span class="c1"># noqa</span>
+    <span class="n">Ema</span><span class="p">,</span> <span class="n">Pairwise</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Deque</span><span class="p">)</span>  <span class="c1"># noqa</span>
 <span class="kn">from</span> <span class="nn">.ops.timing</span> <span class="k">import</span> <span class="p">(</span>
     <span class="n">Delay</span><span class="p">,</span> <span class="n">Timeout</span><span class="p">,</span> <span class="n">Throttle</span><span class="p">,</span> <span class="n">Debounce</span><span class="p">,</span> <span class="n">Sample</span><span class="p">)</span>  <span class="c1"># noqa</span>
 <span class="kn">from</span> <span class="nn">.ops.misc</span> <span class="k">import</span> <span class="n">Errors</span><span class="p">,</span> <span class="n">EndOnError</span>  <span class="c1"># noqa</span>

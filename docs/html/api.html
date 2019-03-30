@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>eventkit &mdash; eventkit 0.8.3 documentation</title>
+  <title>eventkit &mdash; eventkit 0.8.4 documentation</title>
   
 
   
@@ -163,7 +163,7 @@
             
   <div class="section" id="eventkit">
 <span id="api"></span><h1>eventkit<a class="headerlink" href="#eventkit" title="Permalink to this headline">¶</a></h1>
-<p>Release 0.8.3.</p>
+<p>Release 0.8.4.</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="section" id="event">
@@ -1057,7 +1057,8 @@ order of the source values.</li>
 </tr>
 </tbody>
 </table>
-<p><code class="docutils literal notranslate"><span class="pre">func</span></code>, <code class="docutils literal notranslate"><span class="pre">timeout</span></code> and <code class="docutils literal notranslate"><span class="pre">ordered</span></code> apply to async functions only.</p>
+<p><code class="docutils literal notranslate"><span class="pre">timeout</span></code>, <code class="docutils literal notranslate"><span class="pre">ordered</span></code> and <code class="docutils literal notranslate"><span class="pre">task_limit</span></code> apply to
+async functions only.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1456,6 +1457,23 @@ The resulting group must be hashable.</td>
 </dd></dl>
 
 <dl class="method">
+<dt id="eventkit.event.Event.deque">
+<code class="descname">deque</code><span class="sig-paren">(</span><em>count=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/event.html#Event.deque"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.event.Event.deque" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emit a <code class="docutils literal notranslate"><span class="pre">deque</span></code> with the last <code class="docutils literal notranslate"><span class="pre">count</span></code> values from the source
+(or less in the lead-in phase).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>count</strong> – Number of last periods to use, or 0 to use all.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#eventkit.ops.aggregate.Deque" title="eventkit.ops.aggregate.Deque"><code class="xref py py-class docutils literal notranslate"><span class="pre">Deque</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="eventkit.event.Event.array">
 <code class="descname">array</code><span class="sig-paren">(</span><em>count=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/event.html#Event.array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.event.Event.array" title="Permalink to this definition">¶</a></dt>
 <dd><p>Emit a numpy array with the last <code class="docutils literal notranslate"><span class="pre">count</span></code> values from the source
@@ -1609,7 +1627,7 @@ each source as positional arguments. Only emits when each source has
 emtted its i-th value and ends when any source ends:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="mi">1</span><span class="p">:</span>    <span class="o">-</span><span class="n">a</span><span class="o">----</span><span class="n">b</span><span class="o">------------------</span><span class="n">c</span><span class="o">------</span><span class="n">d</span><span class="o">---</span><span class="n">e</span><span class="o">--</span><span class="n">f</span><span class="o">---|</span>
 <span class="n">source</span> <span class="mi">2</span><span class="p">:</span>    <span class="o">--------</span><span class="mi">1</span><span class="o">-------</span><span class="mi">2</span><span class="o">-------</span><span class="mi">3</span><span class="o">---------</span><span class="mi">4</span><span class="o">-----|</span>
-<span class="n">output</span> <span class="n">emit</span><span class="p">:</span> <span class="o">--------</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">---</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">---</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">-----</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">-|</span>
+<span class="n">output</span> <span class="n">emit</span><span class="p">:</span> <span class="o">--------</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">---</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">----</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">----</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">-|</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2569,6 +2587,25 @@ event and emit the sample.</p>
 
 </dd></dl>
 
+<dl class="class">
+<dt id="eventkit.ops.aggregate.Deque">
+<em class="property">class </em><code class="descclassname">eventkit.ops.aggregate.</code><code class="descname">Deque</code><span class="sig-paren">(</span><em>count</em>, <em>source=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/ops/aggregate.html#Deque"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.ops.aggregate.Deque" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="eventkit.ops.aggregate.Deque.on_source">
+<code class="descname">on_source</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/ops/aggregate.html#Deque.on_source"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.ops.aggregate.Deque.on_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emit a new value to all connected listeners.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> – Argument values to emit to listeners.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-eventkit.ops.combine">
 <span id="combine"></span><h2>Combine<a class="headerlink" href="#module-eventkit.ops.combine" title="Permalink to this headline">¶</a></h2>
@@ -2679,7 +2716,7 @@ from multiple source events.</p>
 <dt id="eventkit.ops.combine.AddableJoinOp">
 <em class="property">class </em><code class="descclassname">eventkit.ops.combine.</code><code class="descname">AddableJoinOp</code><span class="sig-paren">(</span><em>*sources</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/ops/combine.html#AddableJoinOp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.ops.combine.AddableJoinOp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for join operators where new sources, produced by a
-parent high-order event, can be added dynamically.</p>
+parent higher-order event, can be added dynamically.</p>
 <dl class="method">
 <dt id="eventkit.ops.combine.AddableJoinOp.add_source">
 <code class="descname">add_source</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/ops/combine.html#AddableJoinOp.add_source"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.ops.combine.AddableJoinOp.add_source" title="Permalink to this definition">¶</a></dt>
@@ -2835,7 +2872,7 @@ parent high-order event, can be added dynamically.</p>
 
 <dl class="class">
 <dt id="eventkit.ops.timing.Debounce">
-<em class="property">class </em><code class="descclassname">eventkit.ops.timing.</code><code class="descname">Debounce</code><span class="sig-paren">(</span><em>interval</em>, <em>on_first=True</em>, <em>source=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/ops/timing.html#Debounce"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.ops.timing.Debounce" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">eventkit.ops.timing.</code><code class="descname">Debounce</code><span class="sig-paren">(</span><em>interval</em>, <em>on_first=False</em>, <em>source=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/ops/timing.html#Debounce"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.ops.timing.Debounce" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="eventkit.ops.timing.Debounce.on_source">
 <code class="descname">on_source</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/ops/timing.html#Debounce.on_source"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.ops.timing.Debounce.on_source" title="Permalink to this definition">¶</a></dt>
@@ -2981,6 +3018,20 @@ when throttling ends.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="eventkit.ops.array.Array.prod">
+<code class="descname">prod</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/ops/array.html#Array.prod"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.ops.array.Array.prod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Product.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#eventkit.ops.array.ArrayProd" title="eventkit.ops.array.ArrayProd"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArrayProd</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="eventkit.ops.array.Array.mean">
 <code class="descname">mean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/ops/array.html#Array.mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.ops.array.Array.mean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mean value.</p>
@@ -3082,6 +3133,25 @@ when throttling ends.</p>
 <dd><dl class="method">
 <dt id="eventkit.ops.array.ArraySum.on_source">
 <code class="descname">on_source</code><span class="sig-paren">(</span><em>arg</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/ops/array.html#ArraySum.on_source"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.ops.array.ArraySum.on_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emit a new value to all connected listeners.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> – Argument values to emit to listeners.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="eventkit.ops.array.ArrayProd">
+<em class="property">class </em><code class="descclassname">eventkit.ops.array.</code><code class="descname">ArrayProd</code><span class="sig-paren">(</span><em>source=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/ops/array.html#ArrayProd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.ops.array.ArrayProd" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="eventkit.ops.array.ArrayProd.on_source">
+<code class="descname">on_source</code><span class="sig-paren">(</span><em>arg</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/ops/array.html#ArrayProd.on_source"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventkit.ops.array.ArrayProd.on_source" title="Permalink to this definition">¶</a></dt>
 <dd><p>Emit a new value to all connected listeners.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
