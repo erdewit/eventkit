@@ -398,14 +398,18 @@ class Event:
                 fut.set_result(
                     args[0] if len(args) == 1 else args if args else NO_VALUE)
 
+        def on_error(source, error):
+            if not fut.done():
+                fut.set_exception(error)
+
         def on_future_done(f):
-            self.disconnect(on_event)
+            self.disconnect(on_event, on_error)
 
         if self.done():
             raise ValueError('Event already done')
         fut = asyncio.Future()
+        self.connect(on_event, on_error)
         fut.add_done_callback(on_future_done)
-        self._slots.append([on_event, None, None])
         return fut.__await__()
 
     __aiter__ = aiter
@@ -624,7 +628,7 @@ class Event:
         Args:
             count: Number of source values to drop.
         """
-        return Skip(count, source=self)
+        return Skip(count, self)
 
     def take(self, count: int = 1) -> "Take":
         """
@@ -985,7 +989,7 @@ class Event:
         Give either ``n`` or ``weight``.
         The relation is ``weight = 2 / (n + 1)``.
         """
-        return Ema(n, weight, source=self)
+        return Ema(n, weight, self)
 
     def previous(self, count: int = 1) -> "Previous":
         """
