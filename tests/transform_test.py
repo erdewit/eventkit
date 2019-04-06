@@ -41,7 +41,7 @@ class TransformTest(unittest.TestCase):
         event = Event.sequence(array, interval=interval).timestamp()
         times = event.pluck(0).run()
         std = np.std(np.diff(times) - interval)
-        self.assertLessEqual(std, 0.001)
+        self.assertLess(std, interval)
 
     def test_partial(self):
         event = Event.sequence(array).partial(42)
