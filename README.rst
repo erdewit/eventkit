@@ -3,7 +3,7 @@
 Introduction
 ------------
 
-The primary use cases of eventmix are
+The primary use cases of eventkit are
 
 * to send events between loosely coupled components;
 * to compose all kinds of event-driven data pipelines.
