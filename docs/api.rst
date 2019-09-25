@@ -18,6 +18,11 @@ Event
    .. automethod:: __await__
    .. automethod:: __aiter__
 
+Op
+--
+
+.. automodule:: eventkit.ops.op
+
 Create
 ------
 
