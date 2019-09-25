@@ -110,7 +110,9 @@ class TransformTest(unittest.TestCase):
 
         a = A()
         event = Event.range(10).map(a.coro, ordered=False)
-        self.assertEqual(event.run(), [i * i for i in reversed(range(10))])
+        result = set(event.run())
+        expected = set(i * i for i in reversed(range(10)))
+        self.assertEqual(result, expected)
 
     def test_mergemap(self):
         marbles = [
@@ -162,4 +164,3 @@ class TransformTest(unittest.TestCase):
             .switchmap(lambda v: Event.marble(marbles[v]))
         self.assertEqual(event.run(), [
             'A', 'B', '1', '2', 'K', 'L', 'M', 'N'])
-
