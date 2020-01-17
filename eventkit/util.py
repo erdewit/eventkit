@@ -43,7 +43,8 @@ async def timerange(start=0, end=None, step: float = 1) \
         step: Number of seconds, or ``datetime.timedelta``,
             to space between values.
     """
-    now = datetime.datetime.now()
+    tz = getattr(start, 'tzinfo', None)
+    now = datetime.datetime.now(tz)
     delta = datetime.timedelta(seconds=step)
     t = start
     if t == 0 or isinstance(t, (int, float)):
@@ -64,7 +65,7 @@ async def timerange(start=0, end=None, step: float = 1) \
         end = now + datetime.timedelta(seconds=end)
 
     while end is None or t <= end:
-        now = datetime.datetime.now(t.tzinfo)
+        now = datetime.datetime.now(tz)
         secs = (t - now).total_seconds()
         await asyncio.sleep(secs)
         yield t
