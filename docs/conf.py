@@ -1,7 +1,7 @@
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
-    'sphinxcontrib.napoleon',
+    'sphinx.ext.napoleon',
     'sphinx_autodoc_typehints',
     ]
 
@@ -9,7 +9,7 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 master_doc = 'index'
 project = 'eventkit'
-copyright = '2019, Ewald de Wit'
+copyright = '2021, Ewald de Wit'
 author = 'Ewald de Wit'
 
 __version__ = None
