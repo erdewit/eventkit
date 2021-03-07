@@ -9,7 +9,7 @@ from .util import NO_VALUE, loop
 
 class Event:
     """
-    Enable event passing between loosly coupled components.
+    Enable event passing between loosely coupled components.
     The event emits values to connected listeners and has
     a selection of operators to create general data flow pipelines.
 
@@ -519,7 +519,7 @@ class Event:
         Supply at most one ``interval`` or ``times``.
 
         Args:
-            value: The source values.
+            values: The source values.
             interval: Time interval in seconds between values.
             times: Relative times for individual values, in seconds since
                 start of event. The sequence should match ``values``.
