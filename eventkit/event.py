@@ -96,6 +96,9 @@ class Event:
         Args:
             listener: The callback to invoke on emit of this event.
                 It gets the ``*args`` from an emit as arguments.
+                If the listener is a coroutine function, or a function that
+                returns an awaitable, the awaitable is run in the
+                asyncio event loop.
             error: The callback to invoke on error of this event.
                 It gets (this event, exception) as two arguments.
             done: The callback to invoke on ending of this event.
@@ -176,14 +179,20 @@ class Event:
             try:
                 if ref:
                     obj = ref()
+
+                result = None
                 if obj is None:
                     if func:
-                        func(*args)
+                        result = func(*args)
                 else:
                     if func:
-                        func(obj, *args)
+                        result = func(obj, *args)
                     else:
-                        obj(*args)
+                        result = obj(*args)
+
+                if result and hasattr(result, '__await__'):
+                    asyncio.ensure_future(result)
+
             except Exception as error:
                 if len(self.error_event):
                     self.error_event.emit(self, error)

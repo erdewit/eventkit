@@ -1,5 +1,6 @@
 import asyncio
 import unittest
+
 from eventkit import Event
 import eventkit as ev
 
@@ -114,6 +115,26 @@ class EventTest(unittest.TestCase):
         self.assertIn(obj.method, event)
         event -= obj.method
         self.assertNotIn(obj.method, event)
+
+    def test_coro_func(self):
+        async def coro(d):
+            result.append(d)
+            await asyncio.sleep(0)
+
+        result = []
+        event = Event('test')
+        event += coro
+
+        event.emit(4)
+        event.emit(2)
+        run(asyncio.sleep(0))
+        self.assertEqual(result, [4, 2])
+
+        result.clear()
+        event -= coro
+        event.emit(8)
+        run(asyncio.sleep(0))
+        self.assertEqual(result, [])
 
     def test_aiter(self):
         async def coro():
