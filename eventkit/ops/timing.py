@@ -1,7 +1,8 @@
+from asyncio import get_event_loop
 from collections import deque
 
 from ..event import Event
-from ..util import NO_VALUE, loop
+from ..util import NO_VALUE
 from .op import Op
 
 
@@ -13,12 +14,15 @@ class Delay(Op):
         self._delay = delay
 
     def on_source(self, *args):
+        loop = get_event_loop()
         loop.call_later(self._delay, self.emit, *args)
 
     def on_source_error(self, error):
+        loop = get_event_loop()
         loop.call_later(self._delay, self.error_event.emit, error)
 
     def on_source_done(self, source):
+        loop = get_event_loop()
         loop.call_later(self._delay, self.set_done)
 
 
@@ -30,11 +34,13 @@ class Timeout(Op):
         if source.done():
             return
         self._timeout = timeout
+        loop = get_event_loop()
         self._last_time = loop.time()
         self._handle = None
         self._schedule()
 
     def on_source(self, *args):
+        loop = get_event_loop()
         self._last_time = loop.time()
 
     def on_source_done(self, source):
@@ -44,10 +50,12 @@ class Timeout(Op):
         self.set_done()
 
     def _schedule(self):
+        loop = get_event_loop()
         self._handle = loop.call_at(
             self._last_time + self._timeout, self._on_timer)
 
     def _on_timer(self):
+        loop = get_event_loop()
         if loop.time() - self._last_time > self._timeout:
             self.emit()
             self.set_done()
@@ -66,6 +74,7 @@ class Debounce(Op):
         self._handle = None
 
     def on_source(self, *args):
+        loop = get_event_loop()
         time = loop.time()
         delta = time - self._last_time
         self._last_time = time
@@ -133,6 +142,7 @@ class Throttle(Op):
             self.status_event.set_done()
 
     def _try_emit(self):
+        loop = get_event_loop()
         t = loop.time()
         q = self._q
         times = self._time_q

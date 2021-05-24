@@ -4,7 +4,7 @@ import asyncio
 import logging
 from typing import List, Union, Iterable, Awaitable, AsyncIterable
 
-from .util import NO_VALUE, loop
+from .util import NO_VALUE
 
 
 class Event:
@@ -205,6 +205,7 @@ class Event:
         Threadsafe version of :meth:`emit` that doesn't invoke the
         listeners directly but via the event loop.
         """
+        loop = asyncio.get_event_loop()
         loop.call_soon_threadsafe(self.emit, *args)
 
     def clear(self):
@@ -236,6 +237,7 @@ class Event:
 
                 await event.list()
         """
+        loop = asyncio.get_event_loop()
         return loop.run_until_complete(self.list())
 
     def pipe(self, *targets: "Event"):
@@ -1048,11 +1050,11 @@ class Event:
         """
         return Last(self)
 
-    def list(self) -> "List":
+    def list(self) -> "ListOp":
         """
         Collect all source values and emit as list when the source ends.
         """
-        return List(self)
+        return ListOp(self)
 
     def deque(self, count=0) -> "Deque":
         """
@@ -1308,7 +1310,7 @@ from .ops.array import (Array, ArrayMin, ArrayMax, ArraySum,  # noqa
     ArrayProd, ArrayMean, ArrayStd, ArrayAny, ArrayAll) # noqa
 from .ops.aggregate import (
     Count, Reduce, Min, Max, Sum, Product, Mean, Any, All,
-    Ema, Pairwise, List, Deque)  # noqa
+    Ema, Pairwise, List as ListOp, Deque)  # noqa
 from .ops.timing import (
     Delay, Timeout, Throttle, Debounce, Sample)  # noqa
 from .ops.misc import Errors, EndOnError  # noqa

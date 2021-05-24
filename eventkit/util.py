@@ -16,12 +16,6 @@ class _NoValue:
 NO_VALUE = _NoValue()
 
 
-loop = asyncio.get_event_loop()
-"""
-Main-thread event loop.
-"""
-
-
 async def timerange(start=0, end=None, step: float = 1) \
         -> AsyncIterator[datetime.datetime]:
     """

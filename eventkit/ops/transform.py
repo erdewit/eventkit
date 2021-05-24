@@ -3,7 +3,7 @@ import time
 import copy
 from collections import deque
 
-from ..util import NO_VALUE, loop
+from ..util import NO_VALUE
 
 from .op import Op
 from .combine import Merge, Chain, Concat, Switch
@@ -257,7 +257,7 @@ class Map(Op):
         # schedule a task to be run
         if self._timeout:
             coro = asyncio.wait_for(coro, self._timeout)
-        task = loop.create_task(coro)
+        task = asyncio.create_task(coro)
         task.add_done_callback(self._on_task_done)
         self._tasks.append(task)
 
