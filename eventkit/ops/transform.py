@@ -257,7 +257,7 @@ class Map(Op):
         # schedule a task to be run
         if self._timeout:
             coro = asyncio.wait_for(coro, self._timeout)
-        task = asyncio.create_task(coro)
+        task = asyncio.ensure_future(coro)
         task.add_done_callback(self._on_task_done)
         self._tasks.append(task)
 
