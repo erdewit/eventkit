@@ -13,10 +13,11 @@ class Wait(Event):
     def __init__(self, future, name='wait'):
         Event.__init__(self, name)
         if future.done():
+            self._task = None
             self.set_done()
-            return
-        self._task = asyncio.ensure_future(future)
-        future.add_done_callback(self._on_task_done)
+        else:
+            self._task = asyncio.ensure_future(future)
+            future.add_done_callback(self._on_task_done)
 
     def _on_task_done(self, task):
         try:
