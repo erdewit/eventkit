@@ -4,7 +4,7 @@ import asyncio
 import logging
 from typing import List, Union, Iterable, Awaitable, AsyncIterable
 
-from .util import NO_VALUE
+from .util import NO_VALUE, main_event_loop
 
 
 class Event:
@@ -203,10 +203,9 @@ class Event:
     def emit_threadsafe(self, *args):
         """
         Threadsafe version of :meth:`emit` that doesn't invoke the
-        listeners directly but via the event loop.
+        listeners directly but via the event loop of the main thread.
         """
-        loop = asyncio.get_event_loop()
-        loop.call_soon_threadsafe(self.emit, *args)
+        main_event_loop.call_soon_threadsafe(self.emit, *args)
 
     def clear(self):
         """
