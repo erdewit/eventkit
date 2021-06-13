@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>eventkit &mdash; eventkit 0.8.7 documentation</title>
+  <title>eventkit &mdash; eventkit 0.8.8 documentation</title>
   
 
   
@@ -168,7 +168,7 @@
             
   <div class="section" id="eventkit">
 <span id="api"></span><h1>eventkit<a class="headerlink" href="#eventkit" title="Permalink to this headline">¶</a></h1>
-<p>Release 0.8.7.</p>
+<p>Release 0.8.8.</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="section" id="event">
@@ -350,7 +350,7 @@ this event.</p>
 <dt id="eventkit.event.Event.emit_threadsafe">
 <code class="sig-name descname"><span class="pre">emit_threadsafe</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventkit/event.html#Event.emit_threadsafe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eventkit.event.Event.emit_threadsafe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threadsafe version of <a class="reference internal" href="#eventkit.event.Event.emit" title="eventkit.event.Event.emit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">emit()</span></code></a> that doesn’t invoke the
-listeners directly but via the event loop.</p>
+listeners directly but via the event loop of the main thread.</p>
 </dd></dl>
 
 <dl class="py method">
