@@ -343,6 +343,9 @@ class Event:
                 * ``False``: Unpack single argument tuples.
         """
         def on_event(*args):
+            if skip_to_last:
+                while q.qsize():
+                    q.get_nowait()
             q.put_nowait((None, args))
 
         def on_error(source, error):
@@ -358,9 +361,6 @@ class Event:
         try:
             while True:
                 what, args = await q.get()
-                if skip_to_last:
-                    while q.qsize():
-                        what, args = q.get_nowait()
                 if what is None:
                     yield args if tuples else args[0] if len(args) == 1 \
                         else args if args else NO_VALUE
