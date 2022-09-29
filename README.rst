@@ -173,7 +173,7 @@ The complete `API documentation <https://eventkit.readthedocs.io/en/latest/api.h
 .. |PyVersion| image:: https://img.shields.io/badge/python-3.6+-blue.svg
    :alt:
 
-.. |Status| image:: https://img.shields.io/badge/status-beta-green.svg
+.. |Status| image:: https://img.shields.io/badge/status-stable-green.svg
    :alt:
 
 .. |License| image:: https://img.shields.io/badge/license-BSD-blue.svg
