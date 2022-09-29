@@ -1,10 +1,10 @@
-import types
-import weakref
 import asyncio
 import logging
-from typing import List, Union, Iterable, Awaitable, AsyncIterable
+import types
+import weakref
+from typing import AsyncIterable, Awaitable, Iterable, List, Union
 
-from .util import NO_VALUE, main_event_loop
+from .util import NO_VALUE, get_event_loop, main_event_loop
 
 
 class Event:
@@ -191,7 +191,8 @@ class Event:
                         result = obj(*args)
 
                 if result and hasattr(result, '__await__'):
-                    asyncio.ensure_future(result)
+                    loop = get_event_loop()
+                    asyncio.ensure_future(result, loop=loop)
 
             except Exception as error:
                 if len(self.error_event):
@@ -236,7 +237,7 @@ class Event:
 
                 await event.list()
         """
-        loop = asyncio.get_event_loop()
+        loop = get_event_loop()
         return loop.run_until_complete(self.list())
 
     def pipe(self, *targets: "Event"):

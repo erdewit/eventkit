@@ -1,5 +1,5 @@
 import functools
-from collections import deque, defaultdict
+from collections import defaultdict, deque
 
 from .op import Op
 from ..event import Event

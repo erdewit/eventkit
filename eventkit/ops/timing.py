@@ -1,9 +1,8 @@
-from asyncio import get_event_loop
 from collections import deque
 
-from ..event import Event
-from ..util import NO_VALUE
 from .op import Op
+from ..event import Event
+from ..util import NO_VALUE, get_event_loop
 
 
 class Delay(Op):

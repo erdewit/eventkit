@@ -15,7 +15,12 @@ class _NoValue:
 
 NO_VALUE = _NoValue()
 
-main_event_loop = asyncio.get_event_loop()
+
+def get_event_loop():
+    return asyncio.get_event_loop_policy().get_event_loop()
+
+
+main_event_loop = get_event_loop()
 
 
 async def timerange(start=0, end=None, step: float = 1) \

@@ -1,12 +1,11 @@
 import asyncio
-import time
 import copy
+import time
 from collections import deque
 
-from ..util import NO_VALUE
-
+from .combine import Chain, Concat, Merge, Switch
 from .op import Op
-from .combine import Merge, Chain, Concat, Switch
+from ..util import NO_VALUE, get_event_loop
 
 
 class Constant(Op):
@@ -257,7 +256,8 @@ class Map(Op):
         # schedule a task to be run
         if self._timeout:
             coro = asyncio.wait_for(coro, self._timeout)
-        task = asyncio.ensure_future(coro)
+        loop = get_event_loop()
+        task = asyncio.ensure_future(coro, loop=loop)
         task.add_done_callback(self._on_task_done)
         self._tasks.append(task)
 

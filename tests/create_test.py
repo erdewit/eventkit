@@ -6,13 +6,13 @@ from eventkit import Event
 array1 = list(range(10))
 array2 = list(range(100, 110))
 
-loop = asyncio.get_event_loop()
+loop = asyncio.get_event_loop_policy().get_event_loop()
 
 
 class CreateTest(unittest.TestCase):
 
     def test_wait(self):
-        fut = asyncio.Future()
+        fut = asyncio.Future(loop=loop)
         loop.call_later(0.001, fut.set_result, 42)
         event = Event.wait(fut)
         self.assertEqual(event.run(), [42])

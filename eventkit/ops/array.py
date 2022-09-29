@@ -1,9 +1,9 @@
 from collections import deque
 
+import numpy as np
+
 from .op import Op
 from ..util import NO_VALUE
-
-import numpy as np
 
 
 class Array(Op):

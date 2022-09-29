@@ -1,72 +1,36 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Introduction &mdash; eventkit 0.8.8 documentation</title>
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-
-  
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; eventkit 0.8.9 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="canonical" href="https://eventkit.readthedocs.ioindex.html"/>
   
-
-  
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="eventkit" href="api.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="#" class="icon icon-home" alt="Documentation Home"> eventkit
-          
-
-          
+            <a href="#" class="icon icon-home"> eventkit
           </a>
-
-          
-            
-            
               <div class="version">
                 0.8
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -74,88 +38,38 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">eventkit</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="#">eventkit</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Introduction</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <p><a class="reference external" href="https://travis-ci.org/erdewit/eventkit"><img alt="Travis build" src="https://api.travis-ci.org/erdewit/eventkit.svg?branch=master" /></a> <img alt="" src="https://img.shields.io/badge/python-3.6+-blue.svg" /> <img alt="" src="https://img.shields.io/badge/status-beta-green.svg" /> <a class="reference external" href="https://pypi.python.org/pypi/eventkit"><img alt="PyPi" src="https://img.shields.io/pypi/v/eventkit.svg" /></a> <img alt="" src="https://img.shields.io/badge/license-BSD-blue.svg" /> <a class="reference external" href="https://eventkit.readthedocs.io"><img alt="Documentation" src="https://readthedocs.org/projects/eventkit/badge/?version=latest" /></a></p>
-<div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
 <p>The primary use cases of eventkit are</p>
 <ul class="simple">
 <li><p>to send events between loosely coupled components;</p></li>
@@ -167,16 +81,16 @@ For scheduling asyncio is used and there is seamless integration with it.</p>
 <p>See the examples and the
 <a class="reference external" href="https://github.com/erdewit/eventkit/tree/master/notebooks/eventkit_introduction.ipynb">introduction notebook</a>
 to get a true feel for the possibilities.</p>
-</div>
-<div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">eventkit</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="http://www.python.org">Python</a> version 3.6 or higher is required.</p>
-</div>
-<div class="section" id="examples">
-<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h1>
 <p><strong>Create an event and connect two listeners</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eventkit</span> <span class="k">as</span> <span class="nn">ev</span>
 
@@ -254,9 +168,9 @@ to get a true feel for the possibilities.</p>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://github.com/erdewit/heartwave/blob/100e1a89d18756e141f9dcfbb73c55a1009debf4/heartwave/app.py#L88">Full source code</a></p>
-</div>
-<div class="section" id="distributed-computing">
-<h1>Distributed computing<a class="headerlink" href="#distributed-computing" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="distributed-computing">
+<h1>Distributed computing<a class="headerlink" href="#distributed-computing" title="Permalink to this heading"></a></h1>
 <p>The <a class="reference external" href="https://github.com/erdewit/distex">distex</a> library provides a
 <code class="docutils literal notranslate"><span class="pre">poolmap</span></code> extension method to put multiple cores or machines to use:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">distex</span> <span class="kn">import</span> <span class="n">Pool</span>
@@ -273,9 +187,9 @@ to get a true feel for the possibilities.</p>
 <span class="n">pool</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="inspired-by">
-<h1>Inspired by:<a class="headerlink" href="#inspired-by" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="inspired-by">
+<h1>Inspired by:<a class="headerlink" href="#inspired-by" title="Permalink to this heading"></a></h1>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference external" href="https://doc.qt.io/qt-5/signalsandslots.html">Qt Signals &amp; Slots</a></p></li>
@@ -288,14 +202,17 @@ to get a true feel for the possibilities.</p>
 <li><p><a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/standard/events">.NET Events</a></p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="documentation">
-<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading"></a></h1>
 <p>The complete <a class="reference external" href="https://eventkit.readthedocs.io/en/latest/api.html">API documentation</a>.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">eventkit</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api.html#event">Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#event">Event</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#eventkit.event.Event"><code class="docutils literal notranslate"><span class="pre">Event</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-eventkit.ops.op">Op</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-eventkit.ops.create">Create</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-eventkit.ops.select">Select</a></li>
@@ -310,60 +227,36 @@ to get a true feel for the possibilities.</p>
 </li>
 </ul>
 </div>
-</div>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="api.html" class="btn btn-neutral float-right" title="eventkit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api.html" class="btn btn-neutral float-right" title="eventkit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2021, Ewald de Wit
-
-    </p>
+    <p>&#169; Copyright 2021, Ewald de Wit.</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
