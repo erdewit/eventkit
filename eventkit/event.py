@@ -369,7 +369,7 @@ class Event:
 
         if self.done():
             return
-        q = asyncio.Queue[Tuple[str, AnyType]]()
+        q: asyncio.Queue[Tuple[str, AnyType]] = asyncio.Queue()
         self.connect(on_event, on_error, on_done)
         try:
             while True:
