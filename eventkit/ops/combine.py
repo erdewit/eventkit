@@ -1,5 +1,6 @@
 import functools
-from collections import defaultdict, deque
+from collections import deque, defaultdict
+from typing import Deque, Optional
 
 from .op import Op
 from ..event import Event
@@ -12,7 +13,7 @@ class Fork(list):
     def __init__(self):
         list.__init__(self)
 
-    def join(self, joiner: "JoinOp") -> Event:
+    def join(self, joiner: "JoinOp"):
         joiner._set_sources(*self)
         self.clear()
         return joiner
@@ -41,8 +42,9 @@ class JoinOp(Op):
     Base class for join operators that combine the emits
     from multiple source events.
     """
-
     __slots__ = ('_sources',)
+
+    _sources: Deque[Event]
 
     def _set_sources(self, sources):
         raise NotImplementedError
@@ -53,8 +55,9 @@ class AddableJoinOp(JoinOp):
     Base class for join operators where new sources, produced by a
     parent higher-order event, can be added dynamically.
     """
-
     __slots__ = ('_parent',)
+
+    _parent: Optional[Event]
 
     def __init__(self, *sources: Event):
         JoinOp.__init__(self)
@@ -73,7 +76,8 @@ class AddableJoinOp(JoinOp):
 
     def set_parent(self, parent: Event):
         self._parent = parent
-        parent.done_event += self._on_parent_done
+        if parent.done_event:
+            parent.done_event += self._on_parent_done
 
     def on_source_done(self, source):
         self._disconnect_from(source)

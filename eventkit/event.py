@@ -2,7 +2,9 @@ import asyncio
 import logging
 import types
 import weakref
-from typing import AsyncIterable, Awaitable, Iterable, List, Union
+from typing import (
+    Any as AnyType, AsyncIterable, Awaitable, Iterable, List, Optional,
+    Tuple, Union)
 
 from .util import NO_VALUE, get_event_loop, main_event_loop
 
@@ -23,6 +25,14 @@ class Event:
 
     NO_VALUE = NO_VALUE
     logger = logging.getLogger(__name__)
+
+    error_event: Optional["Event"]
+    done_event: Optional["Event"]
+    _name: str
+    _value: AnyType
+    _slots: List[List]
+    _done: bool
+    _source: Optional["Event"]
 
     def __init__(self, name: str = '', _with_error_done_events: bool = True):
         self.error_event = None
@@ -74,7 +84,8 @@ class Event:
         return NO_VALUE if v is NO_VALUE else \
             v[0] if len(v) == 1 else v if v else NO_VALUE
 
-    def connect(self, listener, error=None, done=None, keep_ref: bool = False):
+    def connect(self, listener, error=None, done=None,
+                keep_ref: bool = False) -> "Event":
         """
         Connect a listener to this event. If the listener is added multiple
         times then it is invoked just as many times on emit.
@@ -118,9 +129,9 @@ class Event:
             ref = None
         slot = [obj, ref, func]
         self._slots.append(slot)
-        if done is not None:
+        if self.done_event and done is not None:
             self.done_event.connect(done)
-        if error is not None:
+        if self.error_event and error is not None:
             self.error_event.connect(error)
         return self
 
@@ -348,7 +359,7 @@ class Event:
             if skip_to_last:
                 while q.qsize():
                     q.get_nowait()
-            q.put_nowait((None, args))
+            q.put_nowait(('', args))
 
         def on_error(source, error):
             q.put_nowait(('ERROR', error))
@@ -358,12 +369,12 @@ class Event:
 
         if self.done():
             return
-        q = asyncio.Queue()
+        q = asyncio.Queue[Tuple[str, AnyType]]()
         self.connect(on_event, on_error, on_done)
         try:
             while True:
                 what, args = await q.get()
-                if what is None:
+                if not what:
                     yield args if tuples else args[0] if len(args) == 1 \
                         else args if args else NO_VALUE
                 elif what == 'ERROR':
