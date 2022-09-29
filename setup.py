@@ -6,7 +6,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
-__version__ = None
+__version__ = ''
 exec(open(os.path.join(here, 'eventkit', 'version.py')).read())
 
 setup(
