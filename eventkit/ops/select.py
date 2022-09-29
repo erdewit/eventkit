@@ -64,7 +64,7 @@ class TakeWhile(Op):
 class DropWhile(Op):
     __slots__ = ('_predicate', '_drop')
 
-    def __init__(self, predicate=lambda x: not(x), source=None):
+    def __init__(self, predicate=lambda x: not x, source=None):
         Op.__init__(self, source)
         self._predicate = predicate
         self._drop = True

@@ -6,7 +6,7 @@ import numpy as np
 
 from eventkit import Event
 
-loop = asyncio.get_event_loop()
+loop = asyncio.get_event_loop_policy().get_event_loop()
 loop.set_debug(True)
 
 array = list(range(20))

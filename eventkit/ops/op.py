@@ -14,6 +14,7 @@ class Op(Event):
     The default handlers will pass along source emits, errors and done events.
     This makes ``Op`` also suitable as an identity operator.
     """
+
     __slots__ = ()
 
     def __init__(self, source: Event = None):

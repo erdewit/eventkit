@@ -16,6 +16,7 @@ class Event:
     Args:
         name: Name to use for this event.
     """
+
     __slots__ = (
         'error_event', 'done_event', '_name', '_value',
         '_slots', '_done', '_source', '__weakref__')
@@ -661,7 +662,7 @@ class Event:
         """
         return TakeWhile(predicate, self)
 
-    def dropwhile(self, predicate=lambda x: not(x)) -> "DropWhile":
+    def dropwhile(self, predicate=lambda x: not x) -> "DropWhile":
         """
         Drop source values until the predicate becomes False and after that
         re-emit everything from the source.
@@ -1293,24 +1294,23 @@ class Event:
         return EndOnError(self)
 
 
-from .ops.op import Op  # noqa
-from .ops.create import (
-    Wait, Aiterate, Sequence, Repeat, Range, Timerange, Timer, Marble)  # noqa
-from .ops.combine import (Fork, AddableJoinOp, Chain, Merge, Concat, Switch,
-    Zip, Ziplatest)  # noqa
-from .ops.select import (
-    Filter, Skip, Take, TakeWhile, DropWhile, TakeUntil, Changes,
-    Unique, Last)  # noqa
-from .ops.transform import (
-    Constant, Iterate, Enumerate, Timestamp, Chunk, ChunkWith,
-    Map, Emap, Mergemap, Chainmap, Concatmap, Switchmap,
-    Partial, PartialRight, Star, Pack, Pluck,
-    Previous, Copy, Deepcopy)  # noqa
-from .ops.array import (Array, ArrayMin, ArrayMax, ArraySum,  # noqa
-    ArrayProd, ArrayMean, ArrayStd, ArrayAny, ArrayAll) # noqa
 from .ops.aggregate import (
-    Count, Reduce, Min, Max, Sum, Product, Mean, Any, All,
-    Ema, Pairwise, List as ListOp, Deque)  # noqa
+    All, Any, Count, Deque, Ema, List as ListOp, Max, Mean, Min, Pairwise,
+    Product, Reduce, Sum)
+from .ops.array import (
+    Array, ArrayAll, ArrayAny, ArrayMax, ArrayMean, ArrayMin, ArrayProd,
+    ArrayStd, ArraySum)
+from .ops.combine import (
+    AddableJoinOp, Chain, Concat, Fork, Merge, Switch, Zip, Ziplatest)
+from .ops.create import (
+    Aiterate, Marble, Range, Repeat, Sequence, Timer, Timerange, Wait)
+from .ops.misc import EndOnError, Errors
+from .ops.op import Op
+from .ops.select import (
+    Changes, DropWhile, Filter, Last, Skip, Take, TakeUntil, TakeWhile, Unique)
 from .ops.timing import (
-    Delay, Timeout, Throttle, Debounce, Sample)  # noqa
-from .ops.misc import Errors, EndOnError  # noqa
+    Debounce, Delay, Sample, Throttle, Timeout)
+from .ops.transform import (
+    Chainmap, Chunk, ChunkWith, Concatmap, Constant, Copy, Deepcopy, Emap,
+    Enumerate, Iterate, Map, Mergemap, Pack, Partial, PartialRight, Pluck,
+    Previous, Star, Switchmap, Timestamp)

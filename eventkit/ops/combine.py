@@ -41,6 +41,7 @@ class JoinOp(Op):
     Base class for join operators that combine the emits
     from multiple source events.
     """
+
     __slots__ = ('_sources',)
 
     def _set_sources(self, sources):
@@ -52,6 +53,7 @@ class AddableJoinOp(JoinOp):
     Base class for join operators where new sources, produced by a
     parent higher-order event, can be added dynamically.
     """
+
     __slots__ = ('_parent',)
 
     def __init__(self, *sources: Event):

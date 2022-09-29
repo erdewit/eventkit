@@ -17,6 +17,7 @@ NO_VALUE = _NoValue()
 
 
 def get_event_loop():
+    """Get asyncio event loop, running or not."""
     return asyncio.get_event_loop_policy().get_event_loop()
 
 
