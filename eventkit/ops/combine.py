@@ -1,5 +1,5 @@
 import functools
-from collections import deque, defaultdict
+from collections import defaultdict, deque
 from typing import Deque, Optional
 
 from .op import Op
@@ -42,6 +42,7 @@ class JoinOp(Op):
     Base class for join operators that combine the emits
     from multiple source events.
     """
+
     __slots__ = ('_sources',)
 
     _sources: Deque[Event]
@@ -55,6 +56,7 @@ class AddableJoinOp(JoinOp):
     Base class for join operators where new sources, produced by a
     parent higher-order event, can be added dynamically.
     """
+
     __slots__ = ('_parent',)
 
     _parent: Optional[Event]
