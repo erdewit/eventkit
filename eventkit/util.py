@@ -1,5 +1,5 @@
 import asyncio
-import datetime
+import datetime as dt
 from typing import AsyncIterator
 
 
@@ -25,7 +25,7 @@ main_event_loop = get_event_loop()
 
 
 async def timerange(start=0, end=None, step: float = 1) \
-        -> AsyncIterator[datetime.datetime]:
+        -> AsyncIterator[dt.datetime]:
     """
     Iterator that waits periodically until certain time points are
     reached while yielding those time points.
@@ -46,28 +46,32 @@ async def timerange(start=0, end=None, step: float = 1) \
             to space between values.
     """
     tz = getattr(start, 'tzinfo', None)
-    now = datetime.datetime.now(tz)
-    delta = datetime.timedelta(seconds=step)
+    now = dt.datetime.now(tz)
+    if isinstance(step, dt.timedelta):
+        delta = step
+        step = delta.total_seconds()
+    else:
+        delta = dt.timedelta(seconds=step)
     t = start
     if t == 0 or isinstance(t, (int, float)):
-        t = now + datetime.timedelta(seconds=t)
+        t = now + dt.timedelta(seconds=t)
         # quantize to step
-        t = datetime.datetime.fromtimestamp(
+        t = dt.datetime.fromtimestamp(
             step * int(t.timestamp() / step))
-    elif isinstance(t, datetime.time):
-        t = datetime.datetime.combine(now.today(), t)
+    elif isinstance(t, dt.time):
+        t = dt.datetime.combine(now.today(), t)
 
     if t < now:
         # t += delta
         t -= ((t - now) // delta) * delta
 
-    if isinstance(end, datetime.time):
-        end = datetime.datetime.combine(now.today(), end)
+    if isinstance(end, dt.time):
+        end = dt.datetime.combine(now.today(), end)
     elif isinstance(end, (int, float)):
-        end = now + datetime.timedelta(seconds=end)
+        end = now + dt.timedelta(seconds=end)
 
     while end is None or t <= end:
-        now = datetime.datetime.now(tz)
+        now = dt.datetime.now(tz)
         secs = (t - now).total_seconds()
         await asyncio.sleep(secs)
         yield t
