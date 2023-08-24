@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>eventkit.event &mdash; eventkit 1.0.0 documentation</title>
+  <title>eventkit.event &mdash; eventkit 1.0.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="canonical" href="https://eventkit.readthedocs.io_modules/eventkit/event.html"/>
@@ -54,9 +54,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>eventkit.event</li>
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eventkit.event</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -78,7 +78,7 @@
 
 
 <div class="viewcode-block" id="Event"><a class="viewcode-back" href="../../api.html#eventkit.event.Event">[docs]</a><span class="k">class</span> <span class="nc">Event</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Enable event passing between loosely coupled components.</span>
 <span class="sd">    The event emits values to connected listeners and has</span>
 <span class="sd">    a selection of operators to create general data flow pipelines.</span>
@@ -104,12 +104,12 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">_with_error_done_events</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">error_event</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sub event that emits errors from this event as</span>
 <span class="sd">        ``emit(source, exception)``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">done_event</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sub event that emits when this event is done as</span>
 <span class="sd">        ``emit(source)``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -123,20 +123,20 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_source</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="Event.name"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.name">[docs]</a>    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This event&#39;s name.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span></div>
 
 <div class="viewcode-block" id="Event.done"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.done">[docs]</a>    <span class="k">def</span> <span class="nf">done</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        ``True`` if event has ended with no more emits coming,</span>
 <span class="sd">        ``False`` otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_done</span></div>
 
 <div class="viewcode-block" id="Event.set_done"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.set_done">[docs]</a>    <span class="k">def</span> <span class="nf">set_done</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set this event to be ended. The event should not emit anything</span>
 <span class="sd">        after that.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -145,7 +145,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">done_event</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.value"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.value">[docs]</a>    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This event&#39;s last emitted value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
@@ -154,7 +154,7 @@
 
 <div class="viewcode-block" id="Event.connect"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.connect">[docs]</a>    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">listener</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">done</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                 <span class="n">keep_ref</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Event&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Connect a listener to this event. If the listener is added multiple</span>
 <span class="sd">        times then it is invoked just as many times on emit.</span>
 
@@ -204,7 +204,7 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="Event.disconnect"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.disconnect">[docs]</a>    <span class="k">def</span> <span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">listener</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">done</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Disconnect a listener from this event.</span>
 
 <span class="sd">        The ``-=`` operator can be used as a synonym for this method.</span>
@@ -230,7 +230,7 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="Event.disconnect_obj"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.disconnect_obj">[docs]</a>    <span class="k">def</span> <span class="nf">disconnect_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Disconnect all listeners on the given object.</span>
 <span class="sd">        (also the error and done listeners).</span>
 
@@ -248,7 +248,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">done_event</span><span class="o">.</span><span class="n">disconnect_obj</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.emit"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.emit">[docs]</a>    <span class="k">def</span> <span class="nf">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Emit a new value to all connected listeners.</span>
 
 <span class="sd">        Args:</span>
@@ -282,14 +282,14 @@
                         <span class="sa">f</span><span class="s1">&#39;Value </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s1"> caused exception for event </span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.emit_threadsafe"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.emit_threadsafe">[docs]</a>    <span class="k">def</span> <span class="nf">emit_threadsafe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Threadsafe version of :meth:`emit` that doesn&#39;t invoke the</span>
 <span class="sd">        listeners directly but via the event loop of the main thread.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">main_event_loop</span><span class="o">.</span><span class="n">call_soon_threadsafe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">emit</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.clear"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.clear">[docs]</a>    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Disconnect all listeners.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_slots</span><span class="p">:</span>
@@ -297,7 +297,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_slots</span> <span class="o">=</span> <span class="p">[]</span></div>
 
 <div class="viewcode-block" id="Event.run"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Start the asyncio event loop, run this event to completion and</span>
 <span class="sd">        return all values as a list::</span>
 
@@ -321,7 +321,7 @@
         <span class="k">return</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">())</span></div>
 
 <div class="viewcode-block" id="Event.pipe"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.pipe">[docs]</a>    <span class="k">def</span> <span class="nf">pipe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">targets</span><span class="p">:</span> <span class="s2">&quot;Event&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Form several events into a pipe::</span>
 
 <span class="sd">            import eventkit as ev</span>
@@ -346,7 +346,7 @@
         <span class="k">return</span> <span class="n">source</span></div>
 
 <div class="viewcode-block" id="Event.fork"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.fork">[docs]</a>    <span class="k">def</span> <span class="nf">fork</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">targets</span><span class="p">:</span> <span class="s2">&quot;Event&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Fork&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fork this event into one or more target events.</span>
 <span class="sd">        Square brackets can be used as a synonym::</span>
 
@@ -381,7 +381,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_split</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Split given callable in (object, function) tuple.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">FunctionType</span><span class="p">):</span>
@@ -401,7 +401,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Invalid callable: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Event.aiter"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.aiter">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">aiter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">skip_to_last</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">tuples</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create an asynchronous iterator that yields the emitted values</span>
 <span class="sd">        from this event::</span>
 
@@ -472,7 +472,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fork</span><span class="p">(</span><span class="o">*</span><span class="n">fork_targets</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Event.__await__"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.__await__">[docs]</a>    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Asynchronously await the next emit of an event::</span>
 
 <span class="sd">            async def coro():</span>
@@ -504,7 +504,7 @@
         <span class="k">return</span> <span class="n">fut</span><span class="o">.</span><span class="fm">__await__</span><span class="p">()</span></div>
 
     <span class="fm">__aiter__</span> <span class="o">=</span> <span class="n">aiter</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Synonym for :meth:`aiter` with default arguments::</span>
 
 <span class="sd">        async def coro():</span>
@@ -515,7 +515,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        See if callable is already connected.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">obj</span><span class="p">,</span> <span class="n">func</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_split</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
@@ -524,7 +524,7 @@
             <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_slots</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Don&#39;t pickle slots.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">with_error_done_event</span> <span class="o">=</span> <span class="p">(</span>
@@ -533,7 +533,7 @@
 
 <div class="viewcode-block" id="Event.init"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.init">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">event_names</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Convenience function for initializing multiple events as members</span>
 <span class="sd">        of the given object.</span>
 
@@ -547,7 +547,7 @@
 
 <div class="viewcode-block" id="Event.create"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.create">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create an event from a async iterator, awaitable, or event</span>
 <span class="sd">        constructor without arguments.</span>
 
@@ -571,7 +571,7 @@
 
 <div class="viewcode-block" id="Event.wait"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.wait">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">wait</span><span class="p">(</span><span class="n">future</span><span class="p">:</span> <span class="n">Awaitable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Wait&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a new event that emits the value of the</span>
 <span class="sd">        awaitable when it becomes available and then set this event done.</span>
 
@@ -584,7 +584,7 @@
 
 <div class="viewcode-block" id="Event.aiterate"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.aiterate">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">aiterate</span><span class="p">(</span><span class="n">ait</span><span class="p">:</span> <span class="n">AsyncIterable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Aiterate&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a new event that emits the yielded values from the</span>
 <span class="sd">        asynchronous iterator.</span>
 
@@ -604,8 +604,8 @@
 <div class="viewcode-block" id="Event.sequence"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.sequence">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">sequence</span><span class="p">(</span>
             <span class="n">values</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="n">times</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Sequence&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+            <span class="n">times</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Sequence&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a new event that emits the given values.</span>
 <span class="sd">        Supply at most one ``interval`` or ``times``.</span>
 
@@ -620,8 +620,8 @@
 <div class="viewcode-block" id="Event.repeat"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.repeat">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">repeat</span><span class="p">(</span>
             <span class="n">value</span><span class="o">=</span><span class="n">NO_VALUE</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="n">times</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Repeat&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+            <span class="n">times</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Repeat&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a new event that repeats ``value`` a number of ``count`` times.</span>
 
 <span class="sd">        Args:</span>
@@ -631,13 +631,13 @@
 <span class="sd">            times: Relative times for individual values, in seconds since</span>
 <span class="sd">                start of event. The sequence should match ``values``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Repeat</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">Repeat</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.range"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.range">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">range</span><span class="p">(</span>
             <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="n">times</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Range&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+            <span class="n">times</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Range&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a new event that emits the values from a range.</span>
 
 <span class="sd">        Args:</span>
@@ -650,7 +650,7 @@
 
 <div class="viewcode-block" id="Event.timerange"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.timerange">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">timerange</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Timerange&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a new event that emits the datetime value, at that datetime,</span>
 <span class="sd">        from a range of datetimes.</span>
 
@@ -672,8 +672,8 @@
         <span class="k">return</span> <span class="n">Timerange</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.timer"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.timer">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">timer</span><span class="p">(</span><span class="n">interval</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Timer&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">timer</span><span class="p">(</span><span class="n">interval</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Timer&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a new timer event that emits at regularly paced intervals</span>
 <span class="sd">        the number of seconds since starting it.</span>
 
@@ -686,8 +686,8 @@
 <div class="viewcode-block" id="Event.marble"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.marble">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">marble</span><span class="p">(</span>
             <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="n">times</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Marble&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+            <span class="n">times</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Marble&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a new event that emits the values from a Rx-type marble string.</span>
 
 <span class="sd">        Args:</span>
@@ -702,7 +702,7 @@
     <span class="c1"># dot access to operators</span>
 
 <div class="viewcode-block" id="Event.filter"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.filter">[docs]</a>    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Filter&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        For every source value, apply predicate and re-emit when True.</span>
 
 <span class="sd">        Args:</span>
@@ -712,7 +712,7 @@
         <span class="k">return</span> <span class="n">Filter</span><span class="p">(</span><span class="n">predicate</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.skip"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.skip">[docs]</a>    <span class="k">def</span> <span class="nf">skip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Skip&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Drop the first ``count`` values from source and follow the source</span>
 <span class="sd">        after that.</span>
 
@@ -722,7 +722,7 @@
         <span class="k">return</span> <span class="n">Skip</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.take"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.take">[docs]</a>    <span class="k">def</span> <span class="nf">take</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Take&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Re-emit first ``count`` values from the source and then end.</span>
 
 <span class="sd">        Args:</span>
@@ -731,7 +731,7 @@
         <span class="k">return</span> <span class="n">Take</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.takewhile"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.takewhile">[docs]</a>    <span class="k">def</span> <span class="nf">takewhile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;TakeWhile&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Re-emit values from the source until the predicate becomes False</span>
 <span class="sd">        and then end.</span>
 
@@ -742,7 +742,7 @@
         <span class="k">return</span> <span class="n">TakeWhile</span><span class="p">(</span><span class="n">predicate</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.dropwhile"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.dropwhile">[docs]</a>    <span class="k">def</span> <span class="nf">dropwhile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;DropWhile&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Drop source values until the predicate becomes False and after that</span>
 <span class="sd">        re-emit everything from the source.</span>
 
@@ -753,7 +753,7 @@
         <span class="k">return</span> <span class="n">DropWhile</span><span class="p">(</span><span class="n">predicate</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.takeuntil"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.takeuntil">[docs]</a>    <span class="k">def</span> <span class="nf">takeuntil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">notifier</span><span class="p">:</span> <span class="s2">&quot;Event&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;TakeUntil&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Re-emit values from the source until the ``notifier`` emits</span>
 <span class="sd">        and then end. If the notifier ends without any emit then</span>
 <span class="sd">        keep passing source values.</span>
@@ -764,7 +764,7 @@
         <span class="k">return</span> <span class="n">TakeUntil</span><span class="p">(</span><span class="n">notifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.constant"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.constant">[docs]</a>    <span class="k">def</span> <span class="nf">constant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">constant</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Constant&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        On emit of the source emit a constant value::</span>
 
 <span class="sd">            emit(value) -&gt; emit(constant)</span>
@@ -775,7 +775,7 @@
         <span class="k">return</span> <span class="n">Constant</span><span class="p">(</span><span class="n">constant</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.iterate"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.iterate">[docs]</a>    <span class="k">def</span> <span class="nf">iterate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Iterate&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        On emit of the source, emit the next value from an iterator::</span>
 
 <span class="sd">            emit(a, b, ...) -&gt; emit(next(it))</span>
@@ -790,7 +790,7 @@
         <span class="k">return</span> <span class="n">Iterate</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.count"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.count">[docs]</a>    <span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Count&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Count and emit the number of source emits::</span>
 
 <span class="sd">            emit(a, b, ...) -&gt; emit(count)</span>
@@ -802,7 +802,7 @@
         <span class="k">return</span> <span class="n">Count</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.enumerate"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.enumerate">[docs]</a>    <span class="k">def</span> <span class="nf">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Enumerate&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add a count to every source value::</span>
 
 <span class="sd">            emit(a, b, ...) -&gt; emit(count, a, b, ...)</span>
@@ -814,7 +814,7 @@
         <span class="k">return</span> <span class="n">Enumerate</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.timestamp"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.timestamp">[docs]</a>    <span class="k">def</span> <span class="nf">timestamp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add a timestamp (from time.time()) to every source value::</span>
 
 <span class="sd">            emit(a, b, ...) -&gt; emit(timestamp, a, b, ...)</span>
@@ -825,7 +825,7 @@
         <span class="k">return</span> <span class="n">Timestamp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.partial"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.partial">[docs]</a>    <span class="k">def</span> <span class="nf">partial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">left_args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Partial&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Pad source values with extra arguments on the left::</span>
 
 <span class="sd">            emit(a, b, ...) -&gt; emit(*left_args, a, b, ...)</span>
@@ -836,7 +836,7 @@
         <span class="k">return</span> <span class="n">Partial</span><span class="p">(</span><span class="o">*</span><span class="n">left_args</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.partial_right"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.partial_right">[docs]</a>    <span class="k">def</span> <span class="nf">partial_right</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">right_args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;PartialRight&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Pad source values with extra arguments on the right::</span>
 
 <span class="sd">            emit(a, b, ...) -&gt; emit(a, b, ..., *right_args)</span>
@@ -847,7 +847,7 @@
         <span class="k">return</span> <span class="n">PartialRight</span><span class="p">(</span><span class="o">*</span><span class="n">right_args</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.star"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.star">[docs]</a>    <span class="k">def</span> <span class="nf">star</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Star&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Unpack a source tuple into positional arguments, similar to the</span>
 <span class="sd">        star operator::</span>
 
@@ -858,7 +858,7 @@
         <span class="k">return</span> <span class="n">Star</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.pack"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.pack">[docs]</a>    <span class="k">def</span> <span class="nf">pack</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Pack&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Pack positional arguments into a tuple::</span>
 
 <span class="sd">            emit(a, b, ...) -&gt; emit((a, b, ...))</span>
@@ -868,7 +868,7 @@
         <span class="k">return</span> <span class="n">Pack</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.pluck"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.pluck">[docs]</a>    <span class="k">def</span> <span class="nf">pluck</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">selections</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;Pluck&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Extract arguments or nested properties from the source values.</span>
 
 <span class="sd">        Select which argument positions to keep::</span>
@@ -900,7 +900,7 @@
 <div class="viewcode-block" id="Event.map"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.map">[docs]</a>    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">task_limit</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Map&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Apply a sync or async function to source values using</span>
 <span class="sd">        positional arguments::</span>
 
@@ -927,7 +927,7 @@
         <span class="k">return</span> <span class="n">Map</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">ordered</span><span class="p">,</span> <span class="n">task_limit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.emap"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.emap">[docs]</a>    <span class="k">def</span> <span class="nf">emap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">constr</span><span class="p">,</span> <span class="n">joiner</span><span class="p">:</span> <span class="s2">&quot;AddableJoinOp&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Emap&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Higher-order event map that creates a new ``Event`` instance</span>
 <span class="sd">        for every source value::</span>
 
@@ -943,7 +943,7 @@
         <span class="k">return</span> <span class="n">Emap</span><span class="p">(</span><span class="n">constr</span><span class="p">,</span> <span class="n">joiner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.mergemap"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.mergemap">[docs]</a>    <span class="k">def</span> <span class="nf">mergemap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">constr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Mergemap&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :meth:`emap` that uses :meth:`merge` to combine the nested events::</span>
 
 <span class="sd">            marbles = [</span>
@@ -958,7 +958,7 @@
         <span class="k">return</span> <span class="n">Mergemap</span><span class="p">(</span><span class="n">constr</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.concatmap"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.concatmap">[docs]</a>    <span class="k">def</span> <span class="nf">concatmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">constr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Concatmap&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :meth:`emap` that uses :meth:`concat` to combine the nested events::</span>
 
 <span class="sd">            marbles = [</span>
@@ -973,7 +973,7 @@
         <span class="k">return</span> <span class="n">Concatmap</span><span class="p">(</span><span class="n">constr</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.chainmap"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.chainmap">[docs]</a>    <span class="k">def</span> <span class="nf">chainmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">constr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Chainmap&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :meth:`emap` that uses :meth:`chain` to combine the nested events::</span>
 
 <span class="sd">            marbles = [</span>
@@ -988,7 +988,7 @@
         <span class="k">return</span> <span class="n">Chainmap</span><span class="p">(</span><span class="n">constr</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.switchmap"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.switchmap">[docs]</a>    <span class="k">def</span> <span class="nf">switchmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">constr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Switchmap&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :meth:`emap` that uses :meth:`switch` to combine the nested events::</span>
 
 <span class="sd">            marbles = [</span>
@@ -1003,7 +1003,7 @@
         <span class="k">return</span> <span class="n">Switchmap</span><span class="p">(</span><span class="n">constr</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.reduce"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.reduce">[docs]</a>    <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">initializer</span><span class="o">=</span><span class="n">NO_VALUE</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Reduce&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Apply a two-argument reduction function to the previous reduction</span>
 <span class="sd">        result and the current value and emit the new reduction result.</span>
 
@@ -1022,19 +1022,19 @@
         <span class="k">return</span> <span class="n">Reduce</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">initializer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.min"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.min">[docs]</a>    <span class="k">def</span> <span class="nf">min</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Min&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Minimum value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Min</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.max"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.max">[docs]</a>    <span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Max&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Maximum value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Max</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.sum"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.sum">[docs]</a>    <span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Sum&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Total sum.</span>
 
 <span class="sd">        Args:</span>
@@ -1043,7 +1043,7 @@
         <span class="k">return</span> <span class="n">Sum</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.product"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.product">[docs]</a>    <span class="k">def</span> <span class="nf">product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Product&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Total product.</span>
 
 <span class="sd">        Args:</span>
@@ -1052,25 +1052,26 @@
         <span class="k">return</span> <span class="n">Product</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.mean"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.mean">[docs]</a>    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Mean&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Total average.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Mean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.any"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.any">[docs]</a>    <span class="k">def</span> <span class="nf">any</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Any&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test if predicate holds for at least one source value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Any</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.all"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.all">[docs]</a>    <span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;All&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test if predicate holds for all source values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">All</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Event.ema"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.ema">[docs]</a>    <span class="k">def</span> <span class="nf">ema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Ema&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Event.ema"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.ema">[docs]</a>    <span class="k">def</span> <span class="nf">ema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">weight</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Ema&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Exponential moving average.</span>
 
 <span class="sd">        Args:</span>
@@ -1083,7 +1084,7 @@
         <span class="k">return</span> <span class="n">Ema</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.previous"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.previous">[docs]</a>    <span class="k">def</span> <span class="nf">previous</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Previous&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        For every source value, emit the ``count``-th previous value::</span>
 
 <span class="sd">            source:  -ab---c--d-e-</span>
@@ -1097,7 +1098,7 @@
         <span class="k">return</span> <span class="n">Previous</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.pairwise"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.pairwise">[docs]</a>    <span class="k">def</span> <span class="nf">pairwise</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Pairwise&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Emit ``(previous_source_value, current_source_value)`` tuples.</span>
 <span class="sd">        Starts emitting on the second source emit::</span>
 
@@ -1107,13 +1108,13 @@
         <span class="k">return</span> <span class="n">Pairwise</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.changes"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.changes">[docs]</a>    <span class="k">def</span> <span class="nf">changes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Changes&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Emit only source values that have changed from the previous value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Changes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.unique"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.unique">[docs]</a>    <span class="k">def</span> <span class="nf">unique</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Unique&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Emit only unique values, dropping values that have already</span>
 <span class="sd">        been emitted.</span>
 
@@ -1125,19 +1126,19 @@
         <span class="k">return</span> <span class="n">Unique</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.last"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.last">[docs]</a>    <span class="k">def</span> <span class="nf">last</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Last&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Wait until source has ended and re-emit its last value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Last</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.list"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ListOp&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Collect all source values and emit as list when the source ends.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">ListOp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.deque"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.deque">[docs]</a>    <span class="k">def</span> <span class="nf">deque</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Deque&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Emit a ``deque`` with the last ``count`` values from the source</span>
 <span class="sd">        (or less in the lead-in phase).</span>
 
@@ -1147,7 +1148,7 @@
         <span class="k">return</span> <span class="n">Deque</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.array"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.array">[docs]</a>    <span class="k">def</span> <span class="nf">array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Array&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Emit a numpy array with the last ``count`` values from the source</span>
 <span class="sd">        (or less in the lead-in phase).</span>
 
@@ -1157,7 +1158,7 @@
         <span class="k">return</span> <span class="n">Array</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.chunk"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.chunk">[docs]</a>    <span class="k">def</span> <span class="nf">chunk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Chunk&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Chunk values up in lists of equal size. The last chunk can be shorter.</span>
 
 <span class="sd">        Args:</span>
@@ -1167,7 +1168,7 @@
 
 <div class="viewcode-block" id="Event.chunkwith"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.chunkwith">[docs]</a>    <span class="k">def</span> <span class="nf">chunkwith</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">timer</span><span class="p">:</span> <span class="s2">&quot;Event&quot;</span><span class="p">,</span> <span class="n">emit_empty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ChunkWith&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Emit a chunked list of values when the timer emits.</span>
 
 <span class="sd">        Args:</span>
@@ -1177,7 +1178,7 @@
         <span class="k">return</span> <span class="n">ChunkWith</span><span class="p">(</span><span class="n">timer</span><span class="p">,</span> <span class="n">emit_empty</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.chain"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.chain">[docs]</a>    <span class="k">def</span> <span class="nf">chain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">:</span> <span class="s2">&quot;Event&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Chain&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Re-emit from a source until it ends, then move to the next source,</span>
 <span class="sd">        Repeat until all sources have ended, ending the chain.</span>
 <span class="sd">        Emits from pending sources are queued up::</span>
@@ -1194,7 +1195,7 @@
         <span class="k">return</span> <span class="n">Chain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.merge"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.merge">[docs]</a>    <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Merge&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Re-emit everything from the source events::</span>
 
 <span class="sd">            source 1:  -a----b-------------c------d-|</span>
@@ -1208,7 +1209,7 @@
         <span class="k">return</span> <span class="n">Merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.concat"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.concat">[docs]</a>    <span class="k">def</span> <span class="nf">concat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Concat&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Re-emit everything from one source until it ends and then move</span>
 <span class="sd">        to the next source::</span>
 
@@ -1223,7 +1224,7 @@
         <span class="k">return</span> <span class="n">Concat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.switch"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.switch">[docs]</a>    <span class="k">def</span> <span class="nf">switch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Switch&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Re-emit everything from one source and move to another source as soon</span>
 <span class="sd">        as that other source starts to emit::</span>
 
@@ -1238,7 +1239,7 @@
         <span class="k">return</span> <span class="n">Switch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.zip"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.zip">[docs]</a>    <span class="k">def</span> <span class="nf">zip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Zip&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Zip sources together: The i-th emit has the i-th value from</span>
 <span class="sd">        each source as positional arguments. Only emits when each source has</span>
 <span class="sd">        emtted its i-th value and ends when any source ends::</span>
@@ -1254,7 +1255,7 @@
         <span class="k">return</span> <span class="n">Zip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.ziplatest"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.ziplatest">[docs]</a>    <span class="k">def</span> <span class="nf">ziplatest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">,</span> <span class="n">partial</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Ziplatest&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Emit zipped values with the latest value from each of the</span>
 <span class="sd">        source events. Emits every time when a source emits::</span>
 
@@ -1271,7 +1272,7 @@
         <span class="k">return</span> <span class="n">Ziplatest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">sources</span><span class="p">,</span> <span class="n">partial</span><span class="o">=</span><span class="n">partial</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.delay"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.delay">[docs]</a>    <span class="k">def</span> <span class="nf">delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delay</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Delay&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Time-shift all source events by a delay::</span>
 
 <span class="sd">            source:  -abc-d-e---f---|</span>
@@ -1285,7 +1286,7 @@
         <span class="k">return</span> <span class="n">Delay</span><span class="p">(</span><span class="n">delay</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.timeout"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.timeout">[docs]</a>    <span class="k">def</span> <span class="nf">timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Timeout&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        When the source doesn&#39;t emit for longer than the timeout period,</span>
 <span class="sd">        do an empty emit and set this event as done.</span>
 
@@ -1296,7 +1297,7 @@
 
 <div class="viewcode-block" id="Event.throttle"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.throttle">[docs]</a>    <span class="k">def</span> <span class="nf">throttle</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">maximum</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">cost_func</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Throttle&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Limit number of emits per time without dropping values.</span>
 <span class="sd">        Values that come in too fast are queued and re-emitted as soon</span>
 <span class="sd">        as allowed by the limits.</span>
@@ -1317,7 +1318,7 @@
         <span class="k">return</span> <span class="n">Throttle</span><span class="p">(</span><span class="n">maximum</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">cost_func</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.debounce"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.debounce">[docs]</a>    <span class="k">def</span> <span class="nf">debounce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delay</span><span class="p">,</span> <span class="n">on_first</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Debounce&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Filter out values from the source that happen in rapid succession.</span>
 
 <span class="sd">        Args:</span>
@@ -1339,19 +1340,19 @@
         <span class="k">return</span> <span class="n">Debounce</span><span class="p">(</span><span class="n">delay</span><span class="p">,</span> <span class="n">on_first</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.copy"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Copy&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a shallow copy of the source values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.deepcopy"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.deepcopy">[docs]</a>    <span class="k">def</span> <span class="nf">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Deepcopy&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a deep copy of the source values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.sample"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.sample">[docs]</a>    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timer</span><span class="p">:</span> <span class="s2">&quot;Event&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Sample&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        At the times that the timer emits, sample the value from this</span>
 <span class="sd">        event and emit the sample.</span>
 
@@ -1361,13 +1362,13 @@
         <span class="k">return</span> <span class="n">Sample</span><span class="p">(</span><span class="n">timer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.errors"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.errors">[docs]</a>    <span class="k">def</span> <span class="nf">errors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Errors&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Emit errors from the source.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Errors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Event.end_on_error"><a class="viewcode-back" href="../../api.html#eventkit.event.Event.end_on_error">[docs]</a>    <span class="k">def</span> <span class="nf">end_on_error</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;EndOnError&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        End on any error from the source.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">EndOnError</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>

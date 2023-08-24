@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>eventkit &mdash; eventkit 1.0.0 documentation</title>
+  <title>eventkit &mdash; eventkit 1.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="canonical" href="https://eventkit.readthedocs.ioapi.html"/>
@@ -158,8 +158,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>eventkit</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">eventkit</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -171,7 +171,7 @@
              
   <section id="eventkit">
 <span id="api"></span><h1>eventkit<a class="headerlink" href="#eventkit" title="Permalink to this heading"></a></h1>
-<p>Release 1.0.0.</p>
+<p>Release 1.0.1.</p>
 <div class="toctree-wrapper compound">
 </div>
 <section id="event">
@@ -550,7 +550,7 @@ Supply at most one <code class="docutils literal notranslate"><span class="pre">
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>values</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>) – The source values.</p></li>
 <li><p><strong>interval</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Time interval in seconds between values.</p></li>
-<li><p><strong>times</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – Relative times for individual values, in seconds since
+<li><p><strong>times</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]]) – Relative times for individual values, in seconds since
 start of event. The sequence should match <code class="docutils literal notranslate"><span class="pre">values</span></code>.</p></li>
 </ul>
 </dd>
@@ -570,7 +570,7 @@ start of event. The sequence should match <code class="docutils literal notransl
 <li><p><strong>value</strong> – The value to emit.</p></li>
 <li><p><strong>count</strong> – Number of times to emit.</p></li>
 <li><p><strong>interval</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Time interval in seconds between values.</p></li>
-<li><p><strong>times</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – Relative times for individual values, in seconds since
+<li><p><strong>times</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]]) – Relative times for individual values, in seconds since
 start of event. The sequence should match <code class="docutils literal notranslate"><span class="pre">values</span></code>.</p></li>
 </ul>
 </dd>
@@ -589,7 +589,7 @@ start of event. The sequence should match <code class="docutils literal notransl
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>args</strong> – Same as for built-in <code class="docutils literal notranslate"><span class="pre">range</span></code>.</p></li>
 <li><p><strong>interval</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Time interval in seconds between values.</p></li>
-<li><p><strong>times</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – Relative times for individual values, in seconds since
+<li><p><strong>times</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]]) – Relative times for individual values, in seconds since
 start of event. The sequence should match the range.</p></li>
 </ul>
 </dd>
@@ -641,7 +641,7 @@ the number of seconds since starting it.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>interval</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Time interval in seconds between emits.</p></li>
-<li><p><strong>count</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Number of times to emit, or <code class="docutils literal notranslate"><span class="pre">None</span></code> for no limit.</p></li>
+<li><p><strong>count</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – Number of times to emit, or <code class="docutils literal notranslate"><span class="pre">None</span></code> for no limit.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -659,7 +659,7 @@ the number of seconds since starting it.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>s</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The string with characters that are emitted.</p></li>
 <li><p><strong>interval</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Time interval in seconds between values.</p></li>
-<li><p><strong>times</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – Relative times for individual values, in seconds since
+<li><p><strong>times</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]]) – Relative times for individual values, in seconds since
 start of event. The sequence should match the marble string.</p></li>
 </ul>
 </dd>
@@ -1216,8 +1216,8 @@ emitted on the second source emit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>n</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Number of periods.</p></li>
-<li><p><strong>weight</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – Weight of new value.</p></li>
+<li><p><strong>n</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – Number of periods.</p></li>
+<li><p><strong>weight</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – Weight of new value.</p></li>
 </ul>
 </dd>
 </dl>
