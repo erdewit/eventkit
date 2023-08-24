@@ -536,7 +536,7 @@ class Event:
     @staticmethod
     def sequence(
             values: Iterable, interval: float = 0,
-            times: Iterable[float] = None) -> "Sequence":
+            times: Iterable[float] | None = None) -> "Sequence":
         """
         Create a new event that emits the given values.
         Supply at most one ``interval`` or ``times``.
@@ -552,7 +552,7 @@ class Event:
     @staticmethod
     def repeat(
             value=NO_VALUE, count=1, interval: float = 0,
-            times: Iterable[float] = None) -> "Repeat":
+            times: Iterable[float] | None = None) -> "Repeat":
         """
         Create a new event that repeats ``value`` a number of ``count`` times.
 
@@ -563,12 +563,12 @@ class Event:
             times: Relative times for individual values, in seconds since
                 start of event. The sequence should match ``values``.
         """
-        return Repeat(interval, value, count)
+        return Repeat(interval, value, count, times)
 
     @staticmethod
     def range(
             *args, interval: float = 0,
-            times: Iterable[float] = None) -> "Range":
+            times: Iterable[float] | None = None) -> "Range":
         """
         Create a new event that emits the values from a range.
 
@@ -604,7 +604,7 @@ class Event:
         return Timerange(start, end, step)
 
     @staticmethod
-    def timer(interval: float, count: int = None) -> "Timer":
+    def timer(interval: float, count: int | None = None) -> "Timer":
         """
         Create a new timer event that emits at regularly paced intervals
         the number of seconds since starting it.
@@ -618,7 +618,7 @@ class Event:
     @staticmethod
     def marble(
             s: str, interval: float = 0,
-            times: Iterable[float] = None) -> "Marble":
+            times: Iterable[float] | None = None) -> "Marble":
         """
         Create a new event that emits the values from a Rx-type marble string.
 
@@ -1001,7 +1001,7 @@ class Event:
         """
         return All(self)
 
-    def ema(self, n: int = None, weight: float = None) -> "Ema":
+    def ema(self, n: int | None = None, weight: float | None = None) -> "Ema":
         """
         Exponential moving average.
 
