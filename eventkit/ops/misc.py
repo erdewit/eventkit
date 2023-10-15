@@ -8,7 +8,7 @@ class Errors(Event):
     def __init__(self, source=None):
         Event.__init__(self)
         self._source = source
-        if source.done():
+        if source is not None and source.done():
             self.set_done()
         else:
             source.error_event += self.emit

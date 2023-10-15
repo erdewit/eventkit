@@ -30,7 +30,7 @@ class Timeout(Op):
 
     def __init__(self, timeout, source=None):
         Op.__init__(self, source)
-        if source.done():
+        if source is not None and source.done():
             return
         self._timeout = timeout
         loop = get_event_loop()

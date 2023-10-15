@@ -223,7 +223,7 @@ class Map(Op):
     def __init__(
             self, func, timeout=0, ordered=True, task_limit=None, source=None):
         Op.__init__(self, source)
-        if source.done():
+        if source is not None and source.done():
             return
         self._func = func
         self._timeout = timeout
