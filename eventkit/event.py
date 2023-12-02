@@ -187,7 +187,7 @@ class Event:
             args: Argument values to emit to listeners.
         """
         self._value = args
-        for obj, ref, func in self._slots:
+        for obj, ref, func in self._slots.copy():
             try:
                 if ref:
                     obj = ref()
