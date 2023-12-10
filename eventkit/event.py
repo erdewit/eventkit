@@ -121,6 +121,10 @@ class Event:
                   garbage collected, then it is automatically disconnected
                   from this event.
         """
+        if isinstance(listener, Op):
+            # let the operator connect itself to this event
+            listener.set_source(self)
+            return self
         obj, func = self._split(listener)
         if not keep_ref and hasattr(obj, '__weakref__'):
             ref = weakref.ref(obj, self._onFinalize)

@@ -151,6 +151,16 @@ class EventTest(unittest.TestCase):
             (4, 4, 4), (4, 5, 9), (4, 6, 15), (4, 7, 22),
             (4, 8, 30), (4, 9, 39)])
 
+    def test_operator_connect(self):
+        result = []
+        ev1 = Event()
+        ev2 = ev.Map(lambda x: x + 10)
+        ev2 += result.append
+        ev1 += ev2
+        for i in range(10):
+            ev1.emit(i)
+        self.assertEqual(result, list(range(10, 20)))
+
 
 if __name__ == "__main__":
     unittest.main()
