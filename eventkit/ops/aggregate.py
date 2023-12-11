@@ -140,9 +140,7 @@ class List(Op):
 
     def on_source_done(self, source):
         self.emit(self._values)
-        self._disconnect_from(self._source)
-        self._source = None
-        self.set_done()
+        Op.on_source_done(self, source)
 
 
 class Deque(Op):

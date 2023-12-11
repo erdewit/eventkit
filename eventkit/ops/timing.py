@@ -21,6 +21,9 @@ class Delay(Op):
         loop.call_later(self._delay, self.error_event.emit, error)
 
     def on_source_done(self, source):
+        if self._source is not None:
+            self._disconnect_from(self._source)
+            self._source = None
         loop = get_event_loop()
         loop.call_later(self._delay, self.set_done)
 
@@ -43,10 +46,9 @@ class Timeout(Op):
         self._last_time = loop.time()
 
     def on_source_done(self, source):
-        self._disconnect_from(self._source)
         self._handle.cancel()
         del self._handle
-        self.set_done()
+        Op.on_source_done(self, source)
 
     def _schedule(self):
         loop = get_event_loop()
@@ -201,7 +203,7 @@ class Sample(Op):
             self.emit(*self._value)
 
     def on_source_done(self, source):
-        Op.on_source_done(self, self)
+        Op.on_source_done(self, self._source)
         self._timer.disconnect(
             self._on_timer,
             self.on_source_error,

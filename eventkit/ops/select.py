@@ -88,10 +88,10 @@ class TakeUntil(Op):
             self.on_source_done)
 
     def _on_notifier(self, *args):
-        self.on_source_done()
+        self.on_source_done(self._source)
 
     def on_source_done(self, source):
-        Op.on_source_done(self, self)
+        Op.on_source_done(self, self._source)
         self._notifier.disconnect(
             self._on_notifier,
             self.on_source_error,
@@ -142,4 +142,4 @@ class Last(Op):
 
     def on_source_done(self, source):
         self.emit(*self._last)
-        self.set_done()
+        Op.on_source_done(self, source)

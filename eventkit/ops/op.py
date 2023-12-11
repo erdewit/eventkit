@@ -32,7 +32,7 @@ class Op(Event):
         else:
             Event.logger.exception(error)
 
-    def on_source_done(self, source):
+    def on_source_done(self, _source):
         if self._source is not None:
             self._disconnect_from(self._source)
             self._source = None

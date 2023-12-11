@@ -173,9 +173,7 @@ class Chunk(Op):
     def on_source_done(self, source):
         if self._list:
             self.emit(self._list)
-        self._disconnect_from(self._source)
-        self._source = None
-        self.set_done()
+        Op.on_source_done(self, self._source)
 
 
 class ChunkWith(Op):
@@ -204,16 +202,13 @@ class ChunkWith(Op):
         if self._list:
             self.emit(self._list)
             self._list = None
-        if self._source is not None:
-            self._disconnect_from(self._source)
-            self._source = None
         if self._timer is not None:
             self._timer.disconnect(
                 self._on_timer,
                 self.on_source_error,
                 self.on_source_done)
             self._timer = None
-        self.set_done()
+        Op.on_source_done(self, self._source)
 
 
 class Map(Op):
@@ -249,7 +244,7 @@ class Map(Op):
     def on_source_done(self, source):
         if not self._tasks:
             # only end when no tasks are pending
-            Op.on_source_done(self, self)
+            Op.on_source_done(self, self._source)
         self._source = None
 
     def _create_task(self, coro):
@@ -282,7 +277,7 @@ class Map(Op):
 
         # end when source has ended with no pending tasks
         if not tasks and self._source is None:
-            Op.on_source_done(self, self)
+            Op.on_source_done(self, self._source)
 
     def _emit_task(self, task):
         try:
